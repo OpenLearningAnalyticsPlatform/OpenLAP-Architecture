@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>RATIONALE</title>
+		<style>
+			/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+sup {
+   vertical-align: super;
+   font-size: smaller;
+}
+
+sub {
+  vertical-align: sub;
+  font-size: smaller;
+}
+
+/* Generic styles */
+body {
+	background: #f5f5f5;
+  color: #222;
+  font-family: 'Palatino Linotype','Book Antiqua',Palatino,FreeSerif,serif;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6,
+ul, ol,
+p,
+code, pre,
+hr {
+	line-height: 1.5em;
+	margin: 1.5em 0 0.5em 0;
+}
+
+*:first-child {
+	margin-top: 0;
+}
+
+/* Headers */
+h1, h2, h3, h4, h5, h6 {
+	font-weight: bold;
+}
+
+h1 {
+	font-size: 3.5em;
+}
+
+h2 {
+	font-size: 2.5em;
+}
+
+h3 {
+	font-size: 2em;
+}
+
+h4 {
+	font-size: 1.5em
+}
+
+h5 {
+	font-size: 1.2em;
+}
+
+h6 {
+	font-size: 1em;
+}
+
+/* Lists */
+ul, ol {
+	padding-left: 2em;
+}
+
+ul {
+	list-style-type: disc;	
+}
+
+ol {
+	list-style-type: decimal;
+}
+
+/* Code and pre */
+code, pre {
+	font-family: "Bitstream Vera Sans Mono", "Courier", monospace;
+}
+code {
+	background: none repeat scroll 0 0 #F8F8FF;
+  border: 1px solid #DEDEDE;
+  border-radius: 3px 	;
+  padding: 0 0.2em;
+}
+pre {
+	border-left: 5px solid #eee;
+	margin-left: 2em;	
+	padding-left: 1em;
+}
+pre > code {
+	background: transparent;
+	border: none;
+	padding: 0;
+}
+
+/* Links */
+a {
+  color: #261A3B;
+}
+
+a:visited {
+  color: #261A3B;
+}
+
+/* Inlines */
+strong {
+	font-weight: bold;
+}
+
+em {
+	font-style: italic;
+}
+
+/* Container */
+.container {
+	background: #FFF;
+	padding: 30px 50px;
+	margin: 0 auto;
+	width: 850px;
+}
+
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h1 id="rationale">RATIONALE</h1>
+<p>The purpose of this architecture is to convey a high level of understanding of the internals of the OpenLAP, explain its main components, and outline their main responsibilities and interactions in order to support the realization of the ecosystem proposed in the paper that envisions this platform. With these architecture, the developers should be able to find the general purpose and architectural approach guidelines when implementing the macro components of the OpenLAP.</p>
+<p>The purpose of the architecture is NOT:</p>
+<ul>
+<li>To provide a high level of detail of each of the components of the OpenLAP.</li>
+<li>To be a formalization of the components, classes, and methods of each of the Macro Components of the OpenLAP.</li>
+<li>To establish or impose specific technologies for implementation.</li>
+<li>To be followed literally, since many details are left unspecified on purpose.</li>
+</ul>
+<p>Developed are expected to understand this high level architecture but also are responsible of implementing the components to the best of their judgment. The OpenLAP is composed of a set of intercommunicating components (referred as Macro Components) are based on the components explained in the vision of Toward an Open Learning Analytics Ecosystem: an Analytics Engine, a Visualizer, an Indicator Engine, A series of Analytics Modules, Analytics Methods and a Database. This is the basis of the division of the OpenLAP into Macro Components: it does not only to map the components described on the paper, but also provide an architectural decision by creating a modular system were components have specific responsibilities, are relatively independent of each other and in conjunction flesh out the purpose if the OpenLAP. This supports the principle of high cohesion and low coupling that most large scale systems should strive towards. Each of the macro components does not only provide an abbreviation of a functionality of the system, but is also a sub-unit of architectural value in the sense that it is internally designed taking into account its responsibilities of the whole system but at the same time following similar patterns of design.</p>
+<p>A popular approach on the current web that has shown to be effective, horizontally scalable and supported by multiple technologies is the 3-layer (or n-layer) architectural approach. By providing each component with a somewhat self sufficient and robust but simple architecture of businesses logic, data access and facades it is possible to interconnect relatively simple components that would otherwise be too complex if they were all deployed in a single unit. Additionally other enables that the components can be individually developed and interconnected loosely. In order to achieve this interconnection, each of the macro component with a server
+side exposes an HTTP REST API to either users or other components.</p>
+
+		</div>
+
+		<script></script>
+	</body>
+</html>

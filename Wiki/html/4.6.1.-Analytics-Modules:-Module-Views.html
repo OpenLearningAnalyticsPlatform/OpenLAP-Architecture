@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>ANALYTICS MODULES: MODULE VIEWS</title>
+		<style>
+			/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+sup {
+   vertical-align: super;
+   font-size: smaller;
+}
+
+sub {
+  vertical-align: sub;
+  font-size: smaller;
+}
+
+/* Generic styles */
+body {
+	background: #f5f5f5;
+  color: #222;
+  font-family: 'Palatino Linotype','Book Antiqua',Palatino,FreeSerif,serif;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6,
+ul, ol,
+p,
+code, pre,
+hr {
+	line-height: 1.5em;
+	margin: 1.5em 0 0.5em 0;
+}
+
+*:first-child {
+	margin-top: 0;
+}
+
+/* Headers */
+h1, h2, h3, h4, h5, h6 {
+	font-weight: bold;
+}
+
+h1 {
+	font-size: 3.5em;
+}
+
+h2 {
+	font-size: 2.5em;
+}
+
+h3 {
+	font-size: 2em;
+}
+
+h4 {
+	font-size: 1.5em
+}
+
+h5 {
+	font-size: 1.2em;
+}
+
+h6 {
+	font-size: 1em;
+}
+
+/* Lists */
+ul, ol {
+	padding-left: 2em;
+}
+
+ul {
+	list-style-type: disc;	
+}
+
+ol {
+	list-style-type: decimal;
+}
+
+/* Code and pre */
+code, pre {
+	font-family: "Bitstream Vera Sans Mono", "Courier", monospace;
+}
+code {
+	background: none repeat scroll 0 0 #F8F8FF;
+  border: 1px solid #DEDEDE;
+  border-radius: 3px 	;
+  padding: 0 0.2em;
+}
+pre {
+	border-left: 5px solid #eee;
+	margin-left: 2em;	
+	padding-left: 1em;
+}
+pre > code {
+	background: transparent;
+	border: none;
+	padding: 0;
+}
+
+/* Links */
+a {
+  color: #261A3B;
+}
+
+a:visited {
+  color: #261A3B;
+}
+
+/* Inlines */
+strong {
+	font-weight: bold;
+}
+
+em {
+	font-style: italic;
+}
+
+/* Container */
+.container {
+	background: #FFF;
+	padding: 30px 50px;
+	margin: 0 auto;
+	width: 850px;
+}
+
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h1 id="analytics-modules-module-views">ANALYTICS MODULES: MODULE VIEWS</h1>
+<h2 id="primary-presentation">Primary Presentation</h2>
+<p><img src="../4.Views/4.6.1.OLAP_Analytics_Modules_Module_Views.png" alt="4.6.1.OLAP_Analytics_Modules_Module_Views.png"></p>
+<h2 id="element-catalog">Element Catalog</h2>
+<h3 id="package-controller">Package: controller</h3>
+<ul>
+<li><strong>AnalyticsModulesController:</strong> This controller exposes the <code>Triad</code> as well as the <code>AnalyticsGoal</code> management methods through a RESTful API for HTTP.</li>
+</ul>
+<h3 id="package-service">Package: service</h3>
+<ul>
+<li><strong>AnalyticsModulesService:</strong> The service enables the Analytics Method macro component to manage the <code>Triad</code> objects as well as the <code>AnalyticsGoal</code> objects. It exposes its functionalities through the <code>AnalyticsMethodsController</code>. When saving <code>Triad</code> entities, it verifies that they do not already exist. The <code>Triad</code> objects do not vaidate the saved configurations. This means that validation must be performed before storing the <code>Triad</code>.</li>
+</ul>
+<h3 id="package-dataaccess">Package: dataAccess</h3>
+<ul>
+<li><strong>TriadRepository:</strong> A data access repository to handle database interaction and load the model of the <code>Triad</code> objects and it&#39;s related entities.</li>
+<li><strong>AnalyticsGoalRepository:</strong> A data access repository to handle the database interaction in order to manage the Analytics Goal entities and its related Analytics Methods.</li>
+</ul>
+<h3 id="package-model">Package: model</h3>
+<ul>
+<li><strong>Triad:</strong> Triads represent groupings of Indicator, Analytics Methods and Visualizations. In this case, it only requires the references to the IDs of those elements. Additionally, the Triads store the <code>OLAPPortConfigurations</code> between both the Indicator output to the Analytics Method input and the Analytics Method output to Visualization Input.</li>
+<li><strong>IndicatorReferene:</strong> The Indicator (specifically its ID in the <code>IndicatorEngine</code>) associated with the particular <code>Triad</code>.</li>
+<li><strong>AnalyticsMethodMetadata::</strong> The AnalyticsMethodMetadata (specifically its ID in the <code>AnalyticsMethods</code> macro component) associated with the particular <code>Triad</code>.</li>
+<li><strong>VisualizationReference:</strong> This model object holds the data for referencing a Visualization from the Visualizer macro-component.</li>
+<li><strong>AnalyticsGoal:</strong> The Analytics Goal represents an arbitrary defined Analytics Goal that is created by the Users of type Teacher. The Analytics Goal correlates multiple Analytics Methods to itself and is used to make suggestions to the user when creating the Triad.</li>
+</ul>
+<h2 id="context-diagram">Context Diagram</h2>
+<p><img src="../4.Views/4.6.1.Context_Diagram.png" alt="4.6.1.Context_Diagram.png"></p>
+<h2 id="variability-guide">Variability Guide</h2>
+<ul>
+<li>Any General User can submit new Analytics Goals requests through the API. In order for Analytics Methods to be correlated with Analytics Goals, a user of type Administrator must activate (or authorize) the requested Analytics Goal. Once the Analytics Goal is active, it can be correlated with Analytics Methods. The <code>OpenLAPWebClient</code> should provide views for the submission of the new Analytics Goals as well as for activating them and correlating with existing Analytics Methods.</li>
+<li>The saving of new <code>Triad</code> objects are done through the Analytics Engine macro component. Ideally it is done only through that component since the Analytics Methods macro component does not verify the correctness of any configuration of the compatibility between the components of the <code>Triad</code>.</li>
+</ul>
+<h2 id="rationale">Rationale</h2>
+<p>The Analytics Methods macro component aims to be a simple referencing mechanism for making suggestions and gaining quick access for stored Triads. The Triads are stored as they are and the compatibility (the configuration of the triad) of the Indicator, Analytics Method and Visualization are not verified, since the task of doing so is done by the Analytics Engine macro component. The saving methods for storing <code>Triad</code> entities are designed to be used by the Analytics Engine alone. Methods for viewing the <code>Triad</code> objects can be made available to other requests sources that are not necessary the Analytics Engine.</p>
+<p>Additionally, the Analytics Methods allow the Users to create Analytics Goals. The Analytics Goals are entities that describe an arbitrary analysis goal such as personalization, comparison, etc. An Analytics Goal can aggregate Analytics Methods once it has been activated. The correlation between Analytics Goal and Analytics Methods are then saved and shown as suggestions during the creation of a <code>Triad</code>.</p>
+<h2 id="related-views">Related Views</h2>
+<ul>
+<li>Section 4.6.2. describes the Component and Connector views for this macro module.</li>
+<li>Section 4.3. explains the Indicator Engine</li>
+<li>Section 4.5. explains the Analytics Methods</li>
+<li>Section 4.4. explains the Visualizer</li>
+<li>Section 4.2. explains the Analytics Engine</li>
+</ul>
+
+		</div>
+
+		<script></script>
+	</body>
+</html>

@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>MAPPING REQUIREMENTS TO ARCHITECTURE</title>
+		<style>
+			/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+sup {
+   vertical-align: super;
+   font-size: smaller;
+}
+
+sub {
+  vertical-align: sub;
+  font-size: smaller;
+}
+
+/* Generic styles */
+body {
+	background: #f5f5f5;
+  color: #222;
+  font-family: 'Palatino Linotype','Book Antiqua',Palatino,FreeSerif,serif;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6,
+ul, ol,
+p,
+code, pre,
+hr {
+	line-height: 1.5em;
+	margin: 1.5em 0 0.5em 0;
+}
+
+*:first-child {
+	margin-top: 0;
+}
+
+/* Headers */
+h1, h2, h3, h4, h5, h6 {
+	font-weight: bold;
+}
+
+h1 {
+	font-size: 3.5em;
+}
+
+h2 {
+	font-size: 2.5em;
+}
+
+h3 {
+	font-size: 2em;
+}
+
+h4 {
+	font-size: 1.5em
+}
+
+h5 {
+	font-size: 1.2em;
+}
+
+h6 {
+	font-size: 1em;
+}
+
+/* Lists */
+ul, ol {
+	padding-left: 2em;
+}
+
+ul {
+	list-style-type: disc;	
+}
+
+ol {
+	list-style-type: decimal;
+}
+
+/* Code and pre */
+code, pre {
+	font-family: "Bitstream Vera Sans Mono", "Courier", monospace;
+}
+code {
+	background: none repeat scroll 0 0 #F8F8FF;
+  border: 1px solid #DEDEDE;
+  border-radius: 3px 	;
+  padding: 0 0.2em;
+}
+pre {
+	border-left: 5px solid #eee;
+	margin-left: 2em;	
+	padding-left: 1em;
+}
+pre > code {
+	background: transparent;
+	border: none;
+	padding: 0;
+}
+
+/* Links */
+a {
+  color: #261A3B;
+}
+
+a:visited {
+  color: #261A3B;
+}
+
+/* Inlines */
+strong {
+	font-weight: bold;
+}
+
+em {
+	font-style: italic;
+}
+
+/* Container */
+.container {
+	background: #FFF;
+	padding: 30px 50px;
+	margin: 0 auto;
+	width: 850px;
+}
+
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h1 id="mapping-requirements-to-architecture">MAPPING REQUIREMENTS TO ARCHITECTURE</h1>
+<p>The mapping to the functional requirements that is exposed in the
+  <a href="./1.-OLAP-System-Overview.html">System Overview</a>
+  can be seen in the table below.
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>
+        Requirement
+      </th>
+      <th>
+        Corresponding Architecture Views and Explanation
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        OpenLAP_SUC_01: View/Modify Dashboard
+      </td>
+      <td>
+        <ul>
+          <li>
+          Views on Section 4.1. Data Collection and Data Storage: The Data Collection and Data Storage Macro Module is involved in handling the Query data when the Analytics Engine executes the Query that the Indicator of the Triad provides.
+          </li>
+          <li>
+          Views on Section 4.2. Analytics Engine: The Analytics Engine is in charge of processing the Triads that are to be processed and subsequently shown in the Dashboard (or any other client).
+          </li>
+          <li>
+          Views on Section 4.3. Indicator Engine: The main entry point to the Indicator Engine form the Client is the Dashboard. The Indicator Engine is the first step to create the Elements shown in the dashboard if there are any indicators.
+          </li>
+          <li>
+          Views on Section 4.4. Visualizer: When the user selects to execute a Triad, the Visualization involved will be fired up by the Analytics Engine and process the data sent by the Indicator&#39;s query or the Analytics Method. The result will be forwarded to the Analytics Engine, which will return it to the requester.
+          </li>
+          <li>
+          Views on Section 4.5. Analytics Modules: When the user selects to execute a Triad, the Analytics Method involved will be fired up by the Analytics Engine and process the data sent by the Indicator&#39;s query.
+          </li>
+          <li>
+          Views on Section 4.6. Analytics Modules: When the user is creating the new Indicator and is presented the option for creating a triad along with an Analytics Method and a Visualization, the Analytics Modules suggest the Analytics Methods based on the Analytics Goal. Additionally the Analytics Methods will store the Triad for future reference.
+          </li>
+          <li>
+          Views on Section 4.7. OpenLAP Web Client: The client provides a view to see the dashboard. The client also is able to make the interactions possible to show the results of the Analytics Engine.
+          </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        OpenLAP_SUC_02: Create Question
+      </td>
+      <td>
+        <ul>
+          <li>
+          Views on Section 4.3. Indicator Engine: The Questions are saved into the Indicator Engine and related to indicators accordingly.
+          </li>
+          <li>
+          Views on Section 4.6. Analytics Modules: The Analytics Modules correlates the Triads to answer the questions.
+          </li>
+          <li>
+          Views on Section 4.7. OpenLAP Web Client: The client will provides the GUI in where questions are asked and then associated with indicators.
+          </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        OpenLAP_SUC_03: Associate Indicator to Question
+      </td>
+      <td>
+        <ul>
+          <li>
+          Views on Section 4.3. Indicator Engine: The Indicators are either created to or retreived from the Indicator Engeine. New Indicators are saved along with their filters. Indicators used as templates are initially fetched to be used and saved as new Indicators.
+          </li>
+          <li>
+          Views on Section 4.7. OpenLAP Web Client: The client will provide a web GUI to configure and save Indicator along its filters.
+          </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        OpenLAP_SUC_04: Generate Indicator
+      </td>
+      <td>
+        <ul>
+          <li>
+          Views on Section 4.3. Indicator Engine: The Indicator Engine provides the facilities to create the query and filters for which the Indicator will be created and saved.
+          </li>
+          <li>
+          Views on Section 4.7. OpenLAP Web Client: The client will provide a web GUI to configure and save Indicator along its filters.
+          </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        OpenLAP_SUC_05: Generate Triad
+      </td>
+      <td>
+        <ul>
+          <li>
+          Views on Section 4.2. Analytics Engine: The analytics Engine will orchestrate the whole procedure of creating the triad as explained in the views. In particular, the C&amp;C view illustrates the components it communicates with in order to create and save the Triad.
+          </li>
+          <li>
+          Views on Section 4.3. Indicator Engine: The Indicator Engine provides the Indicator to be referenced in the Triad.
+          </li>
+          <li>
+          Views on Section 4.4. Visualizer: The Visualizer provides the Visualization that is to be referenced in the Triad. It also validates that the configuration of output of the Analytics Method is compatible with the Visualization input.
+          </li>
+          <li>
+          Views on Section 4.5. Analytics Methods: The Analytics Methods will provide the particular Analytics Method that is to be referenced by theTriad. It also validates that the configuration of output of the Indicator is compatible with the Analytics Method input.
+          </li>
+          <li>
+          Views on Section 4.6. Analytics Modules: The Analytics Modules is where the Triad will be saved.
+          </li>
+          <li>
+          Views on Section 4.7. OpenLAP Web Client: The client will provide a web GUI to configure and save the Triad.
+          </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        OpenLAP_SUC_06: View Triad Execution
+      </td>
+      <td>
+        <ul>
+          <li>
+          Views in 4.1. Data Collection and Data Storage: The data of the query stored in the Indicator is held in this component. The Analytics Engine executes the query and handles the result to the appropriate macro components.
+          </li>
+          <li>
+          Views in 4.2. Analytics Engine: Accepts the request to execute Triads, which contains reference to the Indicator, Analytics Method and Visualization to be used. It then orchestrates the handling of the workflow, where the query is executed, its results sent to the Analytics Method and executed and then finally sent to the Visualizer to process. It then returns the generated HTML code.
+          </li>
+          <li>
+          Views in 4.3. Indicator Engine: The Indicator Engine has an existing Indicator that exists on a Triad. The indicator has a query to fetch the data which is executed by the Analytics Engine.
+          </li>
+          <li>
+          Views in 4.4. Visualizer: The Visualizer uses the visualization stated on the Triad. The macro component receives the data that is outputed from the Analytics Method or Indicator&#39;s query and handled by the Analytics Engine. It processes the data and returns the visualization code that can be embedded to the Analytics Engine.
+          </li>
+          <li>
+          Views in 4.5. Analytics Methods: The Data that is outputed by the execution of the Indicator query is passed by the Analytics Engine to an Analytics Method for processing. The result is handled back to the Analytics Engine to be forwarded to the Visualizer.
+          </li>
+          <li>
+          Views in 4.6. Analytics Modules: The Analytics Module holds the Triad that is to be executed to the Analytics Engine. It is this Triad that indicates the Analytics Engine which Indicator, Analytics Method and Visualization to use at execution.
+          </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        OpenLAP_SUC_07: Administer Data Collection and Data Availability
+      </td>
+      <td>
+        <ul>
+          <li>
+          Views on Section 4.1. Data Collection and Data Storage: The Data Collection and Data Storage macro component provides the main functionalities to realize this use case. It enables the users to modify the data collection settings and to configure existing collectors to work on their accounts.
+          </li>
+          <li>
+          Views on Section 4.7.OpenLAP Web Client: The client should provide a GUI for the users to modify existing data collectors attached to their accounts as well as attaching existing data collectors to their accounts.
+          </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        OpenLAP_SUC_08: Request Creation/View Analytics Goals
+      </td>
+      <td>
+        <ul>
+          <li>
+            Views in 4.6. Analytics Modules: The Analytics Modules exposes an API that allows the Users to request the creation of new Analytics Goals as well as attaching Analytics Methods to them. Additionally it provides means to activate Analytics Goals for Administrator users.
+          </li>
+          <li>
+            Views in 4.7. MVC Client: The client has a GUI to access the HTTP RESTful methods that the Analytics Modules expose through their API.
+          </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        OpenLAP_SUC_09: Register Data collection for Third Party Application
+      </td>
+      <td>
+        <ul>
+          <li>
+          Views on Section 4.1. Data Collection and Data Storage: The Data Collection and Data Storage macro component provides the methods to submit the authorization of a data collection third party program. In particular, holds HTTP RESTful methods to register and authorize the application through the controller.
+          </li>
+          <li>
+          Views on Section 4.7. OpenLAP Web Client: The client provides a GUI for the users of type Developer/Researcher to register their external applications for collecting Data. The GUI, as with other components and Use Cases, is a facade to the HTTP RESTful methods exposed by the other macro components.
+          </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        OpenLAP_SUC_10: Create/View/Update Analytics Methods
+      </td>
+      <td>
+        <ul>
+          <li>
+          Views in 4.5 Analytics Methods: The Analytics Methods macro component enables the Users to submit Analytics Methods through the Controller. Additionally enables the user of type Developer/Researcher to obtain the authorization key to sign the JAR files submitted.
+          </li>
+          <li>
+          Views in 4.7. OpenLAP Web Client: The web client has an interface that connects to the Analytics Method Controller handles the upload requests, the application key requests and the Analytics Method modification requests.
+          </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        OpenLAP_SUC_11: Create/View/Update Visualizations
+      </td>
+      <td>
+        <ul>
+          <li>
+            Views in 4.4 Visualizer: The Visualizer macro component enables the Users to submit Visualizations through the Controller, which exposes an API.
+          </li>
+          <li>
+            Views in 4.7. OpenLAP Web Client: The client has an interface that sends RESTful requests to the API of the Visualizer and handles the upload requests as well as the modification requests.
+          </li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        OpenLAP_SUC_12: Submit Usage Data
+      </td>
+      <td>
+        <ul>
+          <li>
+            Views in 4.1. Data Collection and Data Storage: This macro component offers an API accessible through HTTP so external applications can submit usage data. The applications that are registered can use the API in order to submit data, which is validated by the Data Collection and Data Storage macro component and stored whenever there are no errors present.
+          </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+		</div>
+
+		<script></script>
+	</body>
+</html>

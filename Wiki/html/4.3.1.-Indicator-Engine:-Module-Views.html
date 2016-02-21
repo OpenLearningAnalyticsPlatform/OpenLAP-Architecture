@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>INDICATOR ENGINE: MODULE VIEWS</title>
+		<style>
+			/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+sup {
+   vertical-align: super;
+   font-size: smaller;
+}
+
+sub {
+  vertical-align: sub;
+  font-size: smaller;
+}
+
+/* Generic styles */
+body {
+	background: #f5f5f5;
+  color: #222;
+  font-family: 'Palatino Linotype','Book Antiqua',Palatino,FreeSerif,serif;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6,
+ul, ol,
+p,
+code, pre,
+hr {
+	line-height: 1.5em;
+	margin: 1.5em 0 0.5em 0;
+}
+
+*:first-child {
+	margin-top: 0;
+}
+
+/* Headers */
+h1, h2, h3, h4, h5, h6 {
+	font-weight: bold;
+}
+
+h1 {
+	font-size: 3.5em;
+}
+
+h2 {
+	font-size: 2.5em;
+}
+
+h3 {
+	font-size: 2em;
+}
+
+h4 {
+	font-size: 1.5em
+}
+
+h5 {
+	font-size: 1.2em;
+}
+
+h6 {
+	font-size: 1em;
+}
+
+/* Lists */
+ul, ol {
+	padding-left: 2em;
+}
+
+ul {
+	list-style-type: disc;	
+}
+
+ol {
+	list-style-type: decimal;
+}
+
+/* Code and pre */
+code, pre {
+	font-family: "Bitstream Vera Sans Mono", "Courier", monospace;
+}
+code {
+	background: none repeat scroll 0 0 #F8F8FF;
+  border: 1px solid #DEDEDE;
+  border-radius: 3px 	;
+  padding: 0 0.2em;
+}
+pre {
+	border-left: 5px solid #eee;
+	margin-left: 2em;	
+	padding-left: 1em;
+}
+pre > code {
+	background: transparent;
+	border: none;
+	padding: 0;
+}
+
+/* Links */
+a {
+  color: #261A3B;
+}
+
+a:visited {
+  color: #261A3B;
+}
+
+/* Inlines */
+strong {
+	font-weight: bold;
+}
+
+em {
+	font-style: italic;
+}
+
+/* Container */
+.container {
+	background: #FFF;
+	padding: 30px 50px;
+	margin: 0 auto;
+	width: 850px;
+}
+
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h1 id="indicator-engine-module-views">INDICATOR ENGINE: MODULE VIEWS</h1>
+<h2 id="primary-presentation">Primary Presentation</h2>
+<p><img src="../4.Views/4.3.1.OLAP_Indicator_Engine_Module_Views.png" alt="4.3.1.OLAP_Indicator_Engine_Module_Views"></p>
+<h2 id="element-catalog">Element Catalog</h2>
+<h3 id="package-controller">Package: controller</h3>
+<p>This package is in charge of holding the main RESTful API endpoints of the entire system system. Classes to handle endpoints for support operations such as validation, user authentication and statistics should be integrated in this package. The OpenLAP Web Client of the complete application should communicate mainly with this module&#39;s controllers</p>
+<ul>
+<li><strong>GAIndicatorSystemController</strong>: This controller will expose the main internal and external methods of the OpenLAP system to be used both through HTTP requests and to/from the OpenLAP Web Client that will serve as the main user interaction place to the platform. It exposes all the pertinent Indicator Engine options to Create, Update and View Indicators for he users. It also allows to perform CRUD operations on the Questions as well as linking indicators to them. The indicator engine also provides functionalities to create filters over indicators and generate the proper code based on the indicator request code it returns to the user. The Controller must have accessor clients for both the Analytics Methods and the Visualizations in order to expose the available analytics methods and visualizations when instantiating the Indicator (associating the Indicator to an Analytics Method and a Visualization). It will access the usable Analytics Methods and Visualizations through a JSON object that contains the operation of the indicator, in which case the clients will provide the possible Analytics Methods / Visualizations.</li>
+</ul>
+<h3 id="package-indicator_system">Package: indicator_system</h3>
+<p>This package holds the &quot;business logic&quot; of the Indicators and Questions as well as providing the drools rules and the interpreter classes for each set of rules that the system applies for eventual generation of the SQL queries that will get forwarded to the Data Collection and Data Storage macro component. It is also the implementation point for new rules to be added on the system and the preprocessing of stored indicators for the controllers to use. This package holds support classes for providing these services to the controller and sub packages for each Operation that is to be defined for the indicators.</p>
+<ul>
+<li><strong>&#60;&#60;Interface&#62;&#62;IndicatorOperation</strong>:Interface for the Abstracting the Indicator Operations. It will be used by the Factory given what the controller requires in order to handle the appropriate instance of Indicator.</li>
+<li><strong>IndicatorOperationFactory</strong>: This factory handles the passing of the correct instance of IndicatorOperation to the controller and trigger the rules that are relevant.</li>
+</ul>
+<h4 id="package-indicatory_system-indicatoroperation">Package: indicatory_system.IndicatorOperation</h4>
+<p>This package is meant to be replicated for each Indicator Operation that is to be made available. Whenever new rules are added, a corresponding IndicatorOperation package with its own Dao and implementation should be created. This also implies that the main controller in the package <code>controller.GAIndicatorSystemController</code> should be modified in order to accommodate the new rule-set.</p>
+<ul>
+<li><strong>IndicatorOperation</strong>: Implementation of the aforementioned IndicatorOperation. Each package that defines new rules must provide an implementation to maintain the design.The responsibility of this class is to trigger the rules based on what is passed down by the <code>GAIndicatorSystemController</code>. The rules must be provided in this package as well.</li>
+</ul>
+<h3 id="package-dao">Package: dao</h3>
+<p>This package holds DAO and Implementation of both Indicator, Question and Operations data and Learning Context Data Model related classes. At least an implementation of each of the DAOs corresponding to entities of the Learning Context Data Model should be able to use the package <code>learningcontextdata</code> and use the <code>DataStoreAccessor</code> to load the model from the macro component Data Collection and Data Storage.</p>
+<ul>
+<li><strong>&#60;&#60;Interface&#62;&#62;GLACategoryDAO</strong>: (There must exist a DAO for each one of the Learning Context Data Model classes used, hence the multiplicity in the diagram) This class and the other corresponding Learning Context Datamodel DAOs are in charge of handling the Data Access for the corresponding model objects described in the package <code>datamodel</code>. For each Class of the <code>datamodel</code> package and at least for each relevant class of the Learning Context Data Model there must exist a corresponding Data Access Layer Class interface DAO.</li>
+<li><strong>GLACategoryDaoImpl</strong>: Implementaiton for each of the DAOs provided in the aforementioned item.</li>
+<li><strong>&#60;&#60;Interface&#62;&#62;GLAIndicatorDao</strong>: Data access Object interface for the Indicators of the OpenLAP system.</li>
+<li><strong>GLAIndicatorDaoImpl</strong>: Implementaiton for each of the DAOs provided in the aforementioned item.</li>
+<li><strong>&#60;&#60;Interface&#62;&#62;OperationsDao</strong>: Interface for the Data Access Object handling Indicators in this macro component.</li>
+<li><strong>OperationsDaoImpl</strong>: Implementation for the Data Access Object Interface for handling operations in the indicator engine.</li>
+<li><strong>&#60;&#60;Interface&#62;&#62;GLAQuestionDao</strong>: Data access Object interface for the Questions of the OpenLAP system.</li>
+<li><strong>GLAQuestionDao</strong>: Implementation for the Data Access Object Interface for the Questions of the OpenLAP system.</li>
+</ul>
+<h3 id="package-datamodel">Package: datamodel</h3>
+<ul>
+<li><strong>GLACategory</strong>: (A class like this should be present for each relevant class of the Learning Context Data Model). This class represents the Category element of the Learning Context Datamodel.</li>
+<li><strong>GLAIndicator</strong>: Data model object to represent the Indicators of the OpenLAP system.</li>
+<li><strong>GLAQuestion</strong>: This class holds the relevant data for representing the Indicator Engine Questions.</li>
+<li><strong>GLAOperations</strong>: This class holds the relevant data for representing the different Indicator operations types, for example: number, correlation, regression, etc. The operation is then turned into a set of queries through the indicator_system logic and those queries are saved into the indicator.</li>
+<li><strong>AnalyticsMethod</strong>: This is a representation of the metadata required for the user to be able to isntantiate an indicator, that is, the user will associate an indicator to a determined Analytics Method in order to be able to produce post processing. This class holds the metadata necessary for the user to determine if they want to associate a determined Analytics Method to the indicator or not. Properties include description, name, availability, Indicator Operations it is available for and description of fields.</li>
+<li><strong>Visualization</strong>: Similar to the previous class, this is a representation of the metadata of a determined visualization method that is made available from the Visualizer macro Component and used to instantiate an indicator (associating the indicator to an Analytics Method and a Visualization). The class holds metadata of the particular visualization (name, description, availability), what operations it is available for and a preview of data for the controller to be showed to the user and ease the instantiation of the indicator.</li>
+</ul>
+<h2 id="context-diagram">Context Diagram</h2>
+<p><img src="../4.Views/4.3.1.Context_Diagram.png" alt="4.3.1.Context_Diagram"></p>
+<h2 id="variability-guide">Variability Guide</h2>
+<ul>
+<li>User and session details have been omitted since they portray another aspect of the Indicator Engine. Ideally, the methods are to be restricted depending on the user role.</li>
+<li>Whenever new indicator rules are to be implemented, they must be connected to a consumer class in the indicator_system package within a sub-package. The class is in charge of interpreting the rules and providing a service to the controller, which needs to be then extended to hold the additional methods for interacting with any new rules and provide API endpoints in order to use them.</li>
+<li>The Indicator Engine, additionally to the operations it offers, communicates with the OpenLAP Web Client macro component that is able to connect to the other macro components that are specified through this architecture in the Data Collection and Data Storage and Analytics Engine macro component Views.</li>
+</ul>
+<h2 id="rationale">Rationale</h2>
+<p>The Indicator Engine macro component main purpose is to provide personalization to the user so they can establish goals and utilize existing indicators to asses their goals or reuse existing indicators made by other users. The Indicator Engine also functions as an entry point to interact with the main usage of the platform: create the indicator request codes for embedding in other applications or the user&#39;s dashboard.
+Additionally, the Indicator Engine must provide a means to communicate with the OpenLAP Web Client macro component for user interaction.</p>
+<h2 id="related-views">Related Views</h2>
+<ul>
+<li>Section 4.3.2. explains the C&amp;C Views of the Indicator Engine</li>
+<li>Section 4.1. explains the Data Collection and Data Storage</li>
+<li>Section 4.7. explains the OpenLAP Web Client macro component.</li>
+</ul>
+
+		</div>
+
+		<script></script>
+	</body>
+</html>

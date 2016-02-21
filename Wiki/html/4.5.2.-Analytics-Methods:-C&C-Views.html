@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>ANALYTICS METHODS: COMPONENT AND CONNECTOR VIEWS</title>
+		<style>
+			/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+sup {
+   vertical-align: super;
+   font-size: smaller;
+}
+
+sub {
+  vertical-align: sub;
+  font-size: smaller;
+}
+
+/* Generic styles */
+body {
+	background: #f5f5f5;
+  color: #222;
+  font-family: 'Palatino Linotype','Book Antiqua',Palatino,FreeSerif,serif;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6,
+ul, ol,
+p,
+code, pre,
+hr {
+	line-height: 1.5em;
+	margin: 1.5em 0 0.5em 0;
+}
+
+*:first-child {
+	margin-top: 0;
+}
+
+/* Headers */
+h1, h2, h3, h4, h5, h6 {
+	font-weight: bold;
+}
+
+h1 {
+	font-size: 3.5em;
+}
+
+h2 {
+	font-size: 2.5em;
+}
+
+h3 {
+	font-size: 2em;
+}
+
+h4 {
+	font-size: 1.5em
+}
+
+h5 {
+	font-size: 1.2em;
+}
+
+h6 {
+	font-size: 1em;
+}
+
+/* Lists */
+ul, ol {
+	padding-left: 2em;
+}
+
+ul {
+	list-style-type: disc;	
+}
+
+ol {
+	list-style-type: decimal;
+}
+
+/* Code and pre */
+code, pre {
+	font-family: "Bitstream Vera Sans Mono", "Courier", monospace;
+}
+code {
+	background: none repeat scroll 0 0 #F8F8FF;
+  border: 1px solid #DEDEDE;
+  border-radius: 3px 	;
+  padding: 0 0.2em;
+}
+pre {
+	border-left: 5px solid #eee;
+	margin-left: 2em;	
+	padding-left: 1em;
+}
+pre > code {
+	background: transparent;
+	border: none;
+	padding: 0;
+}
+
+/* Links */
+a {
+  color: #261A3B;
+}
+
+a:visited {
+  color: #261A3B;
+}
+
+/* Inlines */
+strong {
+	font-weight: bold;
+}
+
+em {
+	font-style: italic;
+}
+
+/* Container */
+.container {
+	background: #FFF;
+	padding: 30px 50px;
+	margin: 0 auto;
+	width: 850px;
+}
+
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h1 id="analytics-methods-component-and-connector-views">ANALYTICS METHODS: COMPONENT AND CONNECTOR VIEWS</h1>
+<h2 id="primary-presentation">Primary Presentation</h2>
+<p><img src="../4.Views/4.5.2.OLAP_Analytics_Methods_C%26C_Views.png" alt="4.5.2.OLAP_Analytics_Methods_C&amp;C_Views.png"></p>
+<h2 id="element-catalog">Element Catalog</h2>
+<h3 id="components">Components</h3>
+<ul>
+<li><strong>&#60;&#60;database&#62;&#62; AnalyticsMethodsDataBase</strong>: This is a database which holds the metadata associated to the uploaded Analytics Methods. The record get updated whenever the Analytics Methods are modified or deleted and is accessed through the <code>AnalyticsMethodRepository</code>.</li>
+<li><strong>&#60;&#60;repository&#62;&#62; AnalyticsMethodsRepository</strong>: Whenever the Analytics Methods are updated or uploaded, the respective metadata is inserted to the <code>AnalyticsMethodsDataBase</code> through this repository. Other interaction with the database is also handled by this object.</li>
+<li><strong>AnalyticsMethodMetadata</strong>: This object holds the metadata of the different uploaded Analytics Methods that the Developers and Researchers submit to the system. Is used to locate the executables as well as provide relevant information that gets exposed in the <code>AnalyticsMethodsController</code>.</li>
+<li><strong>AnalyticsMethodsService</strong>: The main service of the macro module. It provides both services for the controller to expose the available Analytics Methods as well as submit new methods. Additionally enables the Analytics Engine macro module to access the Analytics Modules to use and get instances for use.</li>
+<li><strong>AnalyticsMethodsUploadValidator</strong>: Whenever new Analytics Methods are submitted, the validator takes care of accessing the submitted <code>AnalyticsMethodBundle</code> jar file and checks that it includes an extension of the <code>&lt;&lt;Abstract&gt;&gt;AbstracAnalyticsMethod</code> as well as valid JSON description metadata and PMML files (if needed).</li>
+<li><strong>&#60;&#60;jarFile&#62;&#62; AnalyticsMethodBundle</strong>: This is a JAR file that holds the binaries of the Analytics Method. It contains at least a class that extends the <code>&lt;&lt;Abstract&gt;&gt;AbstractAnalyiticsMethod</code> Class and is uploaded along with a JSON object that describes the metadata. The Analyitcs Method can provide a PMML file that can be checked by the validator. Additionally the Jar file can contain other needed classes for the internal implementation of the method. These components are checked for validity by the <code>AnalyticsMethodsUploadValidator</code> during submission and/or modification. The <code>AnalyticsMethodsService</code> then provides an API for the Analytics Engine macro component to interact with instances of the Analytics Method submitted in the file.</li>
+<li><strong>&#60;&#60;controller&#62;&#62; AnalyticsMethodsController</strong>: This controller exposes a RESTful HTTP API with methods for uploading, modifying, and browsing Analytics Methods. It also exposes methods for checking the input ports of available Analytics Methods as well as their metadata. Ideally, the <code>OpenLAPWebClient</code> will provide a we interface for this controller, but the methods can be used with direct HTTP requests.</li>
+<li><strong>&#60;&#60;user&#62;&#62; Developer/Researcher</strong>: The Developer/Researcher interacts with the Analytics Methods upload features through HTTP. The Methods can be used through he instantiation of indicators with the help of the Analyitcs Engine macro component.</li>
+<li><strong>&#60;&#60;macroComponent&#62;&#62; AnalyticsEngine</strong>: The Analytics Engine can access instances of the Analytics Methods (classes extending of <code>&lt;&lt;Abstract&gt;&gt;AbstracAnalyticsMethod</code>) through the usage of the <code>AnalyticsMethodsService</code>.</li>
+<li><strong>&#60;&#60;macroComponent&#62;&#62; AnalyticsModules</strong>: The Analytics Modules macro component stores the configuration of mappings between the outputs of Indicators, Analytics Methods and/or Visualizations in the Triads. This configuration is saved when the indicator is created and is used directly by the Analytics Engine whenever requests for that specific indicator are executed. The configuration is then used over instances of the Analytics Methods in order to analyze data form the Indicators.</li>
+</ul>
+<h3 id="connectors">Connectors</h3>
+<ul>
+<li><strong>HTTP</strong>: Methods for the controller are accessed via HTTP or a browser. The controller exposes HTTP endpoints in order to support the design.</li>
+<li><strong>JPA</strong>: JPA is used to access the Database.</li>
+<li><strong>AnalyticsMethodsDatabase &#60;&#60;contains&#62;&#62; AnalyticsMethodMetadata</strong>: The stored items of the <code>AnalyticsMethodsDataBase</code> are mainly mappings of <code>AnalyticsMethodMetadata</code>.</li>
+<li><strong>AnalyticsMethodMetadata &#60;&#60;refers&#62;&#62; AnalyticsMethodBundle</strong>: The <code>AnalyticsMethodMetadata</code> contains the reference and data about the <code>AnalyticsMethodBundle</code>, in particular description fields and location.</li>
+<li><strong>AnalyticsMethodBundle &#60;&#60;contains&#62;&#62; :AbstractAnalyticsMethod</strong>: The bundles have the Instrances (classes that extend the <code>&lt;&lt;Abstract&gt;&gt;AbstractAnalyiticsMethod</code>) of the Analytics Methods.</li>
+<li><strong>:AbstractAnalyticsMethod &#60;&#60;contains&#62;&#62; OLAPPortConfiguration</strong>: The Analytics Method instances must be able to process OLAPPortConfiguration for the Triads with and check that the output of the Indicator query is compatible with its own input.</li>
+<li><strong>AnalyticsMethodsUploadValidator &#60;&#60;validates&#62;&#62; AnalyticsMethodBundle</strong>: The validator checks that the Bundle is compilant with the framework&#39;s minimum guidelines.</li>
+<li><strong>AnalyticsMethodsController &#60;&#60;uses&#62;&#62; AnalyticsMethodBundle</strong>: The Bundle is submitted to the Controller via HTTP.</li>
+<li><strong>AnalyticsMethodsController &#60;&#60;uses&#62;&#62; OLAPPortConfiguration</strong>: The controller uses the OLAPPortConfiguration of the Triad in order to dynamically check that the types of input/output are correct with the help of the instances of the Analytics Methods.</li>
+<li><strong>AnalyticsEngine &#60;&#60;uses&#62;&#62; OLAPPortConfiguration</strong>: The Analytics Engine accesses the OLAPPortConfiguration stored in the Triads.</li>
+<li><strong>Developer/Researcher &#60;&#60;submits&#62;&#62; AnalyticsMethodBunle</strong>: The Developer/Researcher submits the bundle Jar file through HTTP.</li>
+<li><strong>OpenLAPWebClient &#60;&#60;submits&#62;&#62; OLAPPortConfiguration</strong>: The Client can interact with the endpoits exposed by the controller sending requests to process OLAPPortConfiguration for validation.</li>
+</ul>
+<h2 id="context-diagram">Context Diagram</h2>
+<p><img src="../4.Views/4.5.2.Context_Diagram.png" alt="4.5.2.Context_Diagram.png"></p>
+<h2 id="variability-guide">Variability Guide</h2>
+<ul>
+<li>The OLAPPortConfiguration are specified according to the specific implementaitons of the classes that extend the <code>&lt;&lt;Abstract&gt;&gt;AbstractAnalyiticsMethod</code>. The OLAPPortConfiguration denote both the input and the output of the specific Analytics Method. The input will be provided by the Analytics Engine and is the result of executing the query that the Indicator provides. The outputs will be sent to the Visualization specified on the Triad.</li>
+<li>The <code>&lt;&lt;Abstract&gt;&gt;AbstractAnalyiticsMethod</code> has methods that must be overriden by the implementations. The methods specify the implementation of the algorithm for execution as well as methods to inform the existence of and provide the PMML file if the implementer wishes to validate it. The implementations must also specify an <code>initialize(OLAPDataSet incomingData, OLAPPortConfiguration configuration)</code> method to initialize the inputs and forcing the implementation to use the passed configuration. The result of the execution of the main algorithm is stored on the Analytics Method output.</li>
+</ul>
+<h2 id="rationale">Rationale</h2>
+<p>The Analytics Methods is a component that resides along the same Java Virtual Machine as the Analytics Engine. The reason behind this is that it allows a module to take care of the management of the Analytics Methods individually but at the same time gives direct access to the uploaded methods to the Analytics Engine.
+The idea is that the Analytics Engine can access the Analytics Modules in a dynamic fashion through the service. The users can submit new Analytics Methods by implementing the framework and uploading them trough the endpoints. Then, the runtime canexecute the Analytis Methods once they are deemed correct for functioning. The framework guarantees minimum execution context in order to do so. Additionally, the framework provides means for type checking of the configurations that are submitted through the controller and then stored in the Analytics Modules macro component inside the respective Triads. This enables the Analytics Modules to run against configurations that can be checked at runtime and be decoupled from the specific data that is used.
+The data about the Amalytics Method is submitted and stored within metadata objects that are stored whenever the method is uploaded or modified as well as holding references for the executable files (JARs) so the Service can relocate the jars if their location is changed.</p>
+<h2 id="related-views">Related Views</h2>
+<ul>
+<li>Section 4.5.1. describes the Modules view in order to understand the overview of the static behavior of the component.</li>
+<li>Section 4.2. describes the Analytics Engine, the main macro component that interacts and uses the Analytics Methods. It also uses the <code>OLAPdataSet</code> in order to pass data to the Visualizer macro component and/or to concatenate Analytics Methods.</li>
+<li>Section 4.4. describes the Visualizer, a macro component that also interacts with the <code>OLAPdataSet</code> package.</li>
+<li>Section 4.6. describes the Analytics Modules, which holds Triads that allow to save configurations between Indicators, Analytics Methods and Visualizations</li>
+</ul>
+
+		</div>
+
+		<script></script>
+	</body>
+</html>

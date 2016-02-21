@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>HOW A VIEW IS DOCUMENTED</title>
+		<style>
+			/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+sup {
+   vertical-align: super;
+   font-size: smaller;
+}
+
+sub {
+  vertical-align: sub;
+  font-size: smaller;
+}
+
+/* Generic styles */
+body {
+	background: #f5f5f5;
+  color: #222;
+  font-family: 'Palatino Linotype','Book Antiqua',Palatino,FreeSerif,serif;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6,
+ul, ol,
+p,
+code, pre,
+hr {
+	line-height: 1.5em;
+	margin: 1.5em 0 0.5em 0;
+}
+
+*:first-child {
+	margin-top: 0;
+}
+
+/* Headers */
+h1, h2, h3, h4, h5, h6 {
+	font-weight: bold;
+}
+
+h1 {
+	font-size: 3.5em;
+}
+
+h2 {
+	font-size: 2.5em;
+}
+
+h3 {
+	font-size: 2em;
+}
+
+h4 {
+	font-size: 1.5em
+}
+
+h5 {
+	font-size: 1.2em;
+}
+
+h6 {
+	font-size: 1em;
+}
+
+/* Lists */
+ul, ol {
+	padding-left: 2em;
+}
+
+ul {
+	list-style-type: disc;	
+}
+
+ol {
+	list-style-type: decimal;
+}
+
+/* Code and pre */
+code, pre {
+	font-family: "Bitstream Vera Sans Mono", "Courier", monospace;
+}
+code {
+	background: none repeat scroll 0 0 #F8F8FF;
+  border: 1px solid #DEDEDE;
+  border-radius: 3px 	;
+  padding: 0 0.2em;
+}
+pre {
+	border-left: 5px solid #eee;
+	margin-left: 2em;	
+	padding-left: 1em;
+}
+pre > code {
+	background: transparent;
+	border: none;
+	padding: 0;
+}
+
+/* Links */
+a {
+  color: #261A3B;
+}
+
+a:visited {
+  color: #261A3B;
+}
+
+/* Inlines */
+strong {
+	font-weight: bold;
+}
+
+em {
+	font-style: italic;
+}
+
+/* Container */
+.container {
+	background: #FFF;
+	padding: 30px 50px;
+	margin: 0 auto;
+	width: 850px;
+}
+
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h1 id="how-a-view-is-documented">HOW A VIEW IS DOCUMENTED</h1>
+<h2 id="primary-presentation">Primary Presentation</h2>
+<p>This section presents the main graphical representations of the view. Whenever a section &quot;key&quot; of the diagram shows the notation used in the diagram. UML is the preferred standard, but any other notation is valid as long as the &quot;key&quot; element comprehensively lists and explain all of it&#39;s elements. Other considerations of this section:</p>
+<ul>
+<li>It shows elements and relations of the view and in the vocabulary.</li>
+<li>Can have more than one diagram in order to further explain the view.</li>
+<li>The <em>architecture cartoon</em> represents the main piece of the architecture for a view and is supported by the rest of the documentation.</li>
+</ul>
+<h2 id="element-catalog">Element Catalog</h2>
+<p>This section presents and explains each element of the Primary Presentation. It gives further information on the properties of the elements and can extend the notation given.</p>
+<ul>
+<li>Details the elements of the primary presentation with the following sections:<ul>
+<li>Elements and their properties: section for names and properties of the element</li>
+<li>Relations and their properties: section for relations not shown, otherwise empty</li>
+<li>Element interfaces</li>
+<li>Element behavior</li>
+</ul>
+</li>
+</ul>
+<h2 id="context-diagram">Context Diagram</h2>
+<p>This section displays a context diagram, i.e. the scope of the current view in the larger scheme of the system. The idea is to isolate the view into context of the larger system for better holistic understanding of the system. It also provides a context for the view to compare it with its environment</p>
+<h2 id="variability-guide">Variability Guide</h2>
+<p>This section explains the variability mechanisms for optional components or parts of the view that can change, be configured or be implemented differently. Also could introduce technological suggestions for known solutions that can support the functionalities depicted through the view. The purpose of this is to show how the pints where the architecture can vary, if needed.</p>
+<h2 id="rationale">Rationale</h2>
+<p>This sections conveys the rationale of the significant architectural decisions made in the scope of the view. If any other alternatives where revised, it explains why they were discarded. The section exposes assumptions and constrains as well as influences for choosing the design as it is.</p>
+<h2 id="related-views">Related Views</h2>
+<p>Gives references to related and/or children views.</p>
+
+		</div>
+
+		<script></script>
+	</body>
+</html>

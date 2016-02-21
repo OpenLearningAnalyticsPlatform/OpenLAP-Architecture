@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>VIEWS</title>
+		<style>
+			/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+sup {
+   vertical-align: super;
+   font-size: smaller;
+}
+
+sub {
+  vertical-align: sub;
+  font-size: smaller;
+}
+
+/* Generic styles */
+body {
+	background: #f5f5f5;
+  color: #222;
+  font-family: 'Palatino Linotype','Book Antiqua',Palatino,FreeSerif,serif;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6,
+ul, ol,
+p,
+code, pre,
+hr {
+	line-height: 1.5em;
+	margin: 1.5em 0 0.5em 0;
+}
+
+*:first-child {
+	margin-top: 0;
+}
+
+/* Headers */
+h1, h2, h3, h4, h5, h6 {
+	font-weight: bold;
+}
+
+h1 {
+	font-size: 3.5em;
+}
+
+h2 {
+	font-size: 2.5em;
+}
+
+h3 {
+	font-size: 2em;
+}
+
+h4 {
+	font-size: 1.5em
+}
+
+h5 {
+	font-size: 1.2em;
+}
+
+h6 {
+	font-size: 1em;
+}
+
+/* Lists */
+ul, ol {
+	padding-left: 2em;
+}
+
+ul {
+	list-style-type: disc;	
+}
+
+ol {
+	list-style-type: decimal;
+}
+
+/* Code and pre */
+code, pre {
+	font-family: "Bitstream Vera Sans Mono", "Courier", monospace;
+}
+code {
+	background: none repeat scroll 0 0 #F8F8FF;
+  border: 1px solid #DEDEDE;
+  border-radius: 3px 	;
+  padding: 0 0.2em;
+}
+pre {
+	border-left: 5px solid #eee;
+	margin-left: 2em;	
+	padding-left: 1em;
+}
+pre > code {
+	background: transparent;
+	border: none;
+	padding: 0;
+}
+
+/* Links */
+a {
+  color: #261A3B;
+}
+
+a:visited {
+  color: #261A3B;
+}
+
+/* Inlines */
+strong {
+	font-weight: bold;
+}
+
+em {
+	font-style: italic;
+}
+
+/* Container */
+.container {
+	background: #FFF;
+	padding: 30px 50px;
+	margin: 0 auto;
+	width: 850px;
+}
+
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h1 id="views">VIEWS</h1>
+<p>For the organization of the views in this project, a component approach has been taken. Ideally, each core-component is to reside in different nodes and could be easily scaled depending on the needs and usage of the OpenLAP system. Each core-component will have at least a Module and Component and Connector view as well as an Allocation view if deemed necessary (not all of them will provide this view, since the architecture is on a high level enough to not compromise with technologies, and allocation views require a deeper level of understanding of the specifics of the hardware and infrastructure of the available computational resources). Some core-components could show more than one specific view but they will be grouped for ease of access.</p>
+<p>The list of core-components of the system are:</p>
+<ol>
+<li><strong>Data Collection and Data Storage:</strong> Responsible of obtaining data from external sources and storing it.</li>
+<li><strong>Analytics Engine:</strong> Responsible on orchestrating the use of Analytics Methods over the data stored in the Data Storage to provide answers (with their respective visualizations) to the questions established through Analytics Modules from users who utilize the Indicator Engine to access the system.</li>
+<li><strong>Indicator Engine:</strong> Allows users to create queries related to learning goals in Analytics Modules through the creation or usage of questions. The users will also be able to select Analytics Methods and Visualizations to use on the data processing and response yielding.</li>
+<li><strong>Visualizer:</strong> Provides an extensible selection of implemented visualization options to operate over structured data in order to allows users to obtain different visualizations and graphs of the processed data.</li>
+<li><strong>Analytics Methods:</strong> Descriptive and Predictive models to analyze data and a Modularity Framework for extending the available ones by developers. This component will reside with the Analytics Engine.</li>
+<li><strong>Analytics Modules:</strong> Grouping of Indicators, Analytics Methods and Visualizations in order provide answer to Learning Goals. This component will reside with the Analytics Engine.</li>
+<li><strong>OpenLAP Web Client:</strong> A description of the main components of the Web Client that will allow the users to interact with the OpenLAP system in conjunction. The main interface entry of the OpenLAP.</li>
+</ol>
+<p>This selection of the core-component are based on the following guidelines, patterns and recommendations on software architecture:</p>
+<ul>
+<li><strong>High Cohesion, Low Coupling:</strong> By designing the system to use separated units, each core-component must then precisely define interfaces. This does not only ease the interaction with each one of these core-component, but forces the implementation to be scoped to the functionalities of a specific part of the system, therefore, each internal component will focus n provide those functionalities, granting high cohesion. Additionally, each component could function independently, which enables low coupling and permits interchangeability, extensibility and modularity of the system as a whole.</li>
+<li><strong>&quot;Don&#39;t repeat yourself&quot;:</strong> A widely adopted principle in system design and architecture, the idea of delegating repeated tasks (or cross cutting concerns) to specialized components (or Aspects in Aspect Oriented Programming) permits to focus the design exercise on the functionalities of the system. Each component assumes tasks like Logging, Security and other non-functional cross cutting concerns to a framework, libraries or modules to be selected by the implementer. Since the non-functional requirements are precisely defined in the System Overview section of this architecture, the tools selected to implement each core-component of the system must provide for solutions that are both compliant with the mentioned non-functional requirements and are also compatible with the other core-components of the OpenLAP. Some guidelines will be provided and where pertinent, detail on the precise tools used to cover this non-functional requirements will be provided.</li>
+<li><strong>REST:</strong> The Representational State Transfer Architectural style, being more appropriate than pure SOA provides the project on easy to use remote endpoints, independent functionalities, simple programming interfaces (designed to work with HTTP). It also enables decoupling and lightweight application design.</li>
+<li><strong>Inversion of Control</strong>: By creating the architecture parts to interact with interface instead of concrete classes, it is possible to not only extend the system more easily but also integrate tools for inversion of control and dependency injection. Frameworks like Spring are the mainstream of this design approach and the architecture should be able to exploit their advantages fully and support its modularity and extensibility as well as standardization and best practices non-functional requirements.</li>
+<li><strong>Standardization and framework usage</strong>: Using a cohesive and standardized design with similar components, architectural approaches across the different macro components allows the different developers to create similar code, increasing its maintainability. Also the adoption of standards through established frameworks and working under the assumption of tested frameworks allows for focusing the design on functional requirements and decoupling them from the non-functional requirements.</li>
+<li><strong>Extensibility and modularity</strong>: Enabling the developers and researchers to expand the OpenLAP with their own modules, the platform offers APIs that support the extension of the system.</li>
+</ul>
+
+		</div>
+
+		<script></script>
+	</body>
+</html>

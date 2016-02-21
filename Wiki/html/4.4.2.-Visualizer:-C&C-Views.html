@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>VISUALIZER: COMPONENT AND CONNECTOR VIEWS</title>
+		<style>
+			/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+sup {
+   vertical-align: super;
+   font-size: smaller;
+}
+
+sub {
+  vertical-align: sub;
+  font-size: smaller;
+}
+
+/* Generic styles */
+body {
+	background: #f5f5f5;
+  color: #222;
+  font-family: 'Palatino Linotype','Book Antiqua',Palatino,FreeSerif,serif;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6,
+ul, ol,
+p,
+code, pre,
+hr {
+	line-height: 1.5em;
+	margin: 1.5em 0 0.5em 0;
+}
+
+*:first-child {
+	margin-top: 0;
+}
+
+/* Headers */
+h1, h2, h3, h4, h5, h6 {
+	font-weight: bold;
+}
+
+h1 {
+	font-size: 3.5em;
+}
+
+h2 {
+	font-size: 2.5em;
+}
+
+h3 {
+	font-size: 2em;
+}
+
+h4 {
+	font-size: 1.5em
+}
+
+h5 {
+	font-size: 1.2em;
+}
+
+h6 {
+	font-size: 1em;
+}
+
+/* Lists */
+ul, ol {
+	padding-left: 2em;
+}
+
+ul {
+	list-style-type: disc;	
+}
+
+ol {
+	list-style-type: decimal;
+}
+
+/* Code and pre */
+code, pre {
+	font-family: "Bitstream Vera Sans Mono", "Courier", monospace;
+}
+code {
+	background: none repeat scroll 0 0 #F8F8FF;
+  border: 1px solid #DEDEDE;
+  border-radius: 3px 	;
+  padding: 0 0.2em;
+}
+pre {
+	border-left: 5px solid #eee;
+	margin-left: 2em;	
+	padding-left: 1em;
+}
+pre > code {
+	background: transparent;
+	border: none;
+	padding: 0;
+}
+
+/* Links */
+a {
+  color: #261A3B;
+}
+
+a:visited {
+  color: #261A3B;
+}
+
+/* Inlines */
+strong {
+	font-weight: bold;
+}
+
+em {
+	font-style: italic;
+}
+
+/* Container */
+.container {
+	background: #FFF;
+	padding: 30px 50px;
+	margin: 0 auto;
+	width: 850px;
+}
+
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h1 id="visualizer-component-and-connector-views">VISUALIZER: COMPONENT AND CONNECTOR VIEWS</h1>
+<h2 id="primary-presentation">Primary Presentation</h2>
+<p><img src="../4.Views/4.4.2.OLAP_Visualizer_C&amp;C_Views.png" alt="4.4.2.OLAP_Visualizer_C&amp;C_Views.png"></p>
+<h2 id="element-catalog">Element Catalog</h2>
+<h3 id="components">Components</h3>
+<ul>
+<li><strong>&#60;&#60;database&#62;&#62; VisualizerDataBase</strong>: This is a database which holds the data containing the uploaded Visualization Frameworks,Methods and Suggestions along with the Data Transformers.The CRUD operations are performed on the database via the appropriate repositories</li>
+<li><strong>&#60;&#60;repository&#62;&#62; VisualizationFrameworkRepository</strong>: Provides an interface for database operations (creation, updating, retrieval or deletion of records) to be performed on the <code>VisualizationFramework</code></li>
+<li><strong>&#60;&#60;repository&#62;&#62; VisualizationMethodRepository</strong>: Provides an interface for interacting with the <code>VisualizationMethod</code></li>
+<li><strong>&#60;&#60;repository&#62;&#62; VisualizationSuggestionRepository</strong>: Provides an interface for database operations to be performed on the <code>VisualizationSuggestion</code></li>
+<li><strong>&#60;&#60;repository&#62;&#62; DataTransformerRepository</strong>: Provides an interface for interacting with the <code>DataTransformer</code></li>
+<li><strong>&#60;&#60;model&#62;&#62;VisualizationFramework</strong>: The object holds the information about a VisualizationFramework that was uploaded by Developers/Researchers to the Visualizer macrocomponent</li>
+<li><strong>&#60;&#60;model&#62;&#62;VisualizationMethod</strong>: Instance of this component holds the information about a VisualizationMethod. A VisualizationMethod belongs to a VisualizationFramework and is part of the bundled JAR that was uploaded by Developers/Researchers to the Visualizer macrocomponent</li>
+<li><strong>&#60;&#60;model&#62;&#62;VisualizationSuggestion</strong>: An instance of this component holds the information about a VisualizationFramework that was uploaded by Developers/Researchers to the Visualizer macrocomponent</li>
+<li><strong>&#60;&#60;model&#62;&#62;DataTransformerMethod</strong>: The object holds information about a DataTransformer that was uploaded by Developers/Researchers to the Visualizer macrocomponent</li>
+<li><strong>&#60;&#60;factory&#62;&#62;DataTransformerFactory</strong>: An abstract factory providing functions to create of DataTransformer objects at runtime. These objects contain the concrete behavior to transform data from the OLAPDataSet into a format parseable by the relative VisualizationMethod</li>
+<li><strong>&#60;&#60;factory&#62;&#62;VisualizationCodeGeneratorFactory</strong>: An abstract factory providing functions to create VisualizationCodeGenerators (VisualizationMethod) objects at runtime. Instances of the VisualizationCodeGenerator contain client visualization code</li>
+<li><strong>&#60;&#60;factory&#62;&#62;DataTransformerFactory</strong>: An abstract factory providing functions to create of DataTransformer objects at runtime</li>
+<li><strong>DataTransformer</strong>: A concrete instance created by the <code>DataTransformerFactory</code></li>
+<li><strong>VisualizationCodeGenerator</strong>: A concrete instance created by the <code>VisualizationCodeGeneratorFactory</code></li>
+<li><strong>&#60;&#60;service&#62;&#62;VisualizationEngineService</strong>: A service which provides methods for the <code>VisualizationEngineController</code> to call to generate the visualization code</li>
+<li><strong>&#60;&#60;service&#62;&#62;VisualizationFrameworkService</strong>: This is a core administration service of the <code>Visualizer</code> macrocomponent. It provides methods for the <code>VisualizationFrameworkController</code> to expose the available Visualization Frameworks and their Methods. In addition, also methods for the controller to create, update or delete existing ones</li>
+<li><strong>&#60;&#60;service&#62;&#62;VisualizationSuggestionService</strong>: A service which exposes methods for the <code>VisualizationSuggestionController</code> to create new VisualizationSuggestion along with retrieving, updating and removing existing ones</li>
+<li><strong>&#60;&#60;service&#62;&#62;ConfigurationService</strong>: A service which provides access to the configuration parameters of the application</li>
+<li><strong>&#60;&#60;service&#62;&#62;FileManager</strong>: A service which exposes methods to access the file storage system of the <code>Visualizer</code> macrocomponent</li>
+<li><strong>&#60;&#60;controller&#62;&#62;VisualizationEngineController</strong>: This controller exposes a RESTful API with methods for generating the visualization code</li>
+<li><strong>&#60;&#60;controller&#62;&#62;VisualizationFrameworkController</strong>: This controller exposes a RESTful API with methods for uploading, modifying, removing and browsing <code>VisualizationFramework</code> and <code>VisualizationMethod</code>. It also contains an endpoint to check the input ports of a <code>VisualizationMethod</code>.</li>
+<li><strong>&#60;&#60;controller&#62;&#62;VisualizationSuggestionController</strong>: This controller exposes a RESTful API with methods for uploading, modifying, removing and browsing <code>VisualizationSuggestion</code></li>
+<li><strong>&#60;&#60;user&#62;&#62;Developer/Researcher</strong>: The user interacts with the Visualizer macrocomponent via sending HTTP requests to the RESTful API exposed by the controllers</li>
+<li><strong>&#60;&#60;macrocomponent&#62;&#62;AnalyticsEngine</strong>: Being the core macrocomponent of the OpenLAP platform the <code>AnalyticsEngine</code> has full access to the <code>Visualizer</code> API. It is through the <code>AnalyticsEngine</code> that user/client requests will reach the <code>Visualizer</code></li>
+</ul>
+<h3 id="connectors">Connectors</h3>
+<ul>
+<li><strong>HTTP request</strong>: Endpoints of the controllers are accessed via HTTP requests sent by clients</li>
+<li><strong>JPA</strong>: Java Persistence API specification used to access the database</li>
+<li><strong>VisualizerDatabase&#60;&#60;contains&#62;&#62;VisualizationFramework</strong>: Represents records of <code>VisualizationFramework</code> stored in the <code>VisualizerDatabase</code></li>
+<li><strong>VisualizerDatabase&#60;&#60;contains&#62;&#62;VisualizationMethod</strong>: Represents records of <code>VisualizationMethod</code> stored in the <code>VisualizerDatabase</code></li>
+<li><strong>VisualizerDatabase&#60;&#60;contains&#62;&#62;VisualizationSuggestion</strong>: Represents records of <code>VisualizationSuggestion</code> stored in the <code>VisualizerDatabase</code></li>
+<li><p><strong>VisualizerDatabase&#60;&#60;contains&#62;&#62;DataTransformerMethod</strong>: Represents records of <code>DataTransformerMethod</code> stored in the <code>VisualizerDatabase</code></p>
+</li>
+<li><p><strong>VisualizationFrameworkRepository&#60;&#60;uses&#62;&#62;VisualizationFramework</strong>: The repository <code>VisualizationFrameworkRepository</code> uses the model <code>VisualizationFramework</code> to map the objects to database records and vice versa</p>
+</li>
+<li><strong>VisualizationMethodRepository&#60;&#60;uses&#62;&#62;VisualizationMethod</strong>: The repository <code>VisualizationMethodRepository</code> uses the model <code>VisualizationMethod</code> to map the objects to database records and vice versa</li>
+<li><strong>VisualizationSuggestionRepository&#60;&#60;uses&#62;&#62;VisualizationSuggestion</strong>: The repository <code>VisualizationSuggestionRepository</code> uses the model <code>VisualizationSuggestion</code> to map the objects to database records and vice versa</li>
+<li><strong>DataTransformerMethodRepository&#60;&#60;uses&#62;&#62;DataTransformerMethod</strong>: The repository <code>DataTransformerMethodRepository</code> uses the model <code>DataTransformerMethod</code> to map the objects to database records and vice versa</li>
+<li><strong>VisualizationEngineService&#60;&#60;uses&#62;&#62;DataTransformerFactory</strong>: <code>VisualizationEngineService</code> uses the factory methods provided by <code>DataTransformerFactory</code> to create instances of the required <code>DataTransformer</code> in order to transform data from the OLAPDataSet into a form parseable by the <code>VisualizationMethod</code></li>
+<li><strong>VisualizationEngineService&#60;&#60;uses&#62;&#62;VisualizationCodeGeneratorFactory</strong>: <code>VisualizationEngineService</code> uses the factory methods provided by <code>VisualizationCodeGeneratorFactory</code> to create instances of the required <code>VisualizationCodeGenerator</code> in order to generate the client visualization code</li>
+<li><strong>VisualizationEngineService&#60;&#60;uses&#62;&#62;VisualizationFrameworkRepository</strong>: <code>VisualizationEngineService</code> uses the repository <code>VisualizationFrameworkRepository</code> to get access to the <code>VisualizationFramework</code> information existing in the database. From this information the service can create the relevant instances required to generate the visualization code</li>
+<li><strong>VisualizationFrameworkService&#60;&#60;uses&#62;&#62;VisualizationFrameworkRepository</strong>: <code>VisualizationFrameworkService</code> uses the repository <code>VisualizationFrameworkRepository</code> to perform CRUD operations on the <code>VisualizationFramework</code> records</li>
+<li><strong>VisualizationFrameworkService&#60;&#60;uses&#62;&#62;VisualizationMethodRepository</strong>: <code>VisualizationFrameworkService</code> uses the repository <code>VisualizationMethodRepository</code> to perform CRUD operations on the <code>VisualizationMethod</code> records</li>
+<li><strong>VisualizationFrameworkService&#60;&#60;uses&#62;&#62;DataTransformerMethodRepository</strong>: <code>VisualizationFrameworkService</code> uses the repository <code>VisualizationMethodRepository</code> to perform CRUD operations on the <code>DataTransformerMethod</code> records</li>
+<li><strong>VisualizationFrameworkService&#60;&#60;uses&#62;&#62;FileManager</strong>: <code>VisualizationFrameworkService</code> uses the the <code>FileManager</code> service to perform file based operations on the Visualizer macrocomponent&#39;s storage system</li>
+<li><strong>VisualizationSuggestionService&#60;&#60;uses&#62;&#62;VisualizationSuggestionRepository</strong>: <code>VisualizationSuggestionService</code> uses the repository <code>VisualizationSuggestionRepository</code> to perform CRUD operations on the <code>VisualizationSuggestion</code> records in the database</li>
+<li><strong>VisualizationSuggestionService&#60;&#60;uses&#62;&#62;VisualizationMethodRepository</strong>: <code>VisualizationFrameworkService</code> uses the repository <code>VisualizationMethodRepository</code> to retrieve information about <code>VisualizationMethod</code> records in order to make the connection between a <code>VisualizationMethod</code> and a <code>VisualizationSuggestion</code></li>
+<li><strong>FileManager&#60;&#60;uses&#62;&#62;ConfigurationService</strong>: <code>FileManager</code> uses the  <code>ConfigurationService</code> to access to the application&#39;s configuration parameters. These configuration parameters include the temporary and permanent locations where the <code>FileManager</code> should store files along with the extension of the uploaded files   </li>
+<li><strong>VisualizationEngineController&#60;&#60;uses&#62;&#62;VisualizationEngineService</strong>: <code>VisualizationEngineController</code> uses the  <code>VisualizationEngineService</code> to service the incoming client requests. Client request reaching the <code>VisualizationEngineController</code> include that for generation of visualization code using a certain <code>VisualizationFramework</code> and <code>VisualizationMethod</code></li>
+<li><strong>VisualizationFrameworkController&#60;&#60;uses&#62;&#62;VisualizationFrameworkService</strong>: <code>VisualizationFrameworkController</code> uses the  <code>VisualizationFrameworkService</code> to service the incoming client requests. These clients requests range from performing CRUD operations on the <code>VisualizationFramework</code>, <code>VisualizationMethod</code> and <code>DataTransformer</code> to validating a <code>VisualizationMethod</code>&#39;s input ports</li>
+<li><strong>VisualizationSuggestionController&#60;&#60;uses&#62;&#62;VisualizationSuggestionService</strong>: <code>VisualizationSuggestionController</code> uses the  <code>VisualizationSuggestionService</code> to service the incoming client requests. These clients requests include performing CRUD operations on the <code>VisualizationSuggestion</code> records in the database</li>
+</ul>
+<h2 id="context-diagram">Context Diagram</h2>
+<p><img src="../4.Views/4.4.2.Context_Diagram.png" alt="4.4.2.Context_Diagram.png"></p>
+<h2 id="variability-guide">Variability Guide</h2>
+<ul>
+<li><p>&#60;&#60;Factory&#62;&#62;DataTransformerFactory = The &#60;&#60;Factory&#62;&#62;DataTransformerFactory is an interface which has to be implemented to provide a concrete implementation of the factory. The methods which are implemented contain the code to create instances of the <code>DataTransformer</code> from the class name. The default implementation of the factory uses the JCL library to load the <code>DataTransformer</code> classes</p>
+</li>
+<li><p>&#60;&#60;Factory&#62;&#62;VisualizationCodeGeneratorFactory = The &#60;&#60;Factory&#62;&#62;VisualizationCodeGeneratorFactory is an interface which has to be implemented to provide a concrete implementation of the factory. The methods which are implemented contain the code to create instances of the <code>VisualizationCodeGenerator</code> from the class name. The default implementation of the factory uses the JCL library to load the <code>VisualizationCodeGenerator</code> classes</p>
+</li>
+<li><p>VisualizationCodeGenerator = The <code>VisualizationCodeGenerator</code> is an abstract class which has methods that must be overriden by the concrete implementations. These abstract methods specify the generation of the visualization code which is sent back to client requests as well as the input and output ports in the form of the OLAPDataSet. The output ports can be safely ignored, however the input port configuration is crucial as it is used to determine if the incoming OLAPDataSet can be processed by the <code>VisualizationCodeGenerator</code></p>
+</li>
+<li><p>DataTransformer = The <code>DataTransformer</code> is an interface which has to be implemented to provide for a concrete implementation of the algorithm to transform data from the OLAPDataSet into a form parseable by the <code>VisualizationCodeGenerator</code></p>
+</li>
+</ul>
+<h2 id="rationale">Rationale</h2>
+<ul>
+<li>The OLAPDataset (Column configuration) has to be included via an overriden method in each <code>VisualizationCodeGenerator</code>. Although, this would belong in the <code>DataTransformer</code> it was explicitly included in the <code>VisualizationCodeGenerator</code> due to the reason that a single <code>DataTransformer</code> can be reused by many <code>VisualizationCodeGenerators</code></li>
+</ul>
+<h2 id="related-views">Related Views</h2>
+<ul>
+<li>Section 4.4.1 explains the static Module Views of the Visualizer</li>
+<li>Section 4.2 explains the Analytics Engine, which orchestrates the interaction with the Visualizer</li>
+<li>Section 4.5 explains the Analytics Methods, which process the data that is to be visualized</li>
+<li>Section 4.6 explains the Analytics Modules, which holds Triads that allow to save configurations between Indicators, Analytics Methods and Visualizations</li>
+</ul>
+
+		</div>
+
+		<script></script>
+	</body>
+</html>

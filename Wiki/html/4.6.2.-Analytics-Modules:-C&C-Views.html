@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>ANALYTICS MODULES: COMPONENT AND CONNECTOR VIEWS</title>
+		<style>
+			/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+sup {
+   vertical-align: super;
+   font-size: smaller;
+}
+
+sub {
+  vertical-align: sub;
+  font-size: smaller;
+}
+
+/* Generic styles */
+body {
+	background: #f5f5f5;
+  color: #222;
+  font-family: 'Palatino Linotype','Book Antiqua',Palatino,FreeSerif,serif;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6,
+ul, ol,
+p,
+code, pre,
+hr {
+	line-height: 1.5em;
+	margin: 1.5em 0 0.5em 0;
+}
+
+*:first-child {
+	margin-top: 0;
+}
+
+/* Headers */
+h1, h2, h3, h4, h5, h6 {
+	font-weight: bold;
+}
+
+h1 {
+	font-size: 3.5em;
+}
+
+h2 {
+	font-size: 2.5em;
+}
+
+h3 {
+	font-size: 2em;
+}
+
+h4 {
+	font-size: 1.5em
+}
+
+h5 {
+	font-size: 1.2em;
+}
+
+h6 {
+	font-size: 1em;
+}
+
+/* Lists */
+ul, ol {
+	padding-left: 2em;
+}
+
+ul {
+	list-style-type: disc;	
+}
+
+ol {
+	list-style-type: decimal;
+}
+
+/* Code and pre */
+code, pre {
+	font-family: "Bitstream Vera Sans Mono", "Courier", monospace;
+}
+code {
+	background: none repeat scroll 0 0 #F8F8FF;
+  border: 1px solid #DEDEDE;
+  border-radius: 3px 	;
+  padding: 0 0.2em;
+}
+pre {
+	border-left: 5px solid #eee;
+	margin-left: 2em;	
+	padding-left: 1em;
+}
+pre > code {
+	background: transparent;
+	border: none;
+	padding: 0;
+}
+
+/* Links */
+a {
+  color: #261A3B;
+}
+
+a:visited {
+  color: #261A3B;
+}
+
+/* Inlines */
+strong {
+	font-weight: bold;
+}
+
+em {
+	font-style: italic;
+}
+
+/* Container */
+.container {
+	background: #FFF;
+	padding: 30px 50px;
+	margin: 0 auto;
+	width: 850px;
+}
+
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h1 id="analytics-modules-component-and-connector-views">ANALYTICS MODULES: COMPONENT AND CONNECTOR VIEWS</h1>
+<h2 id="primary-presentation">Primary Presentation</h2>
+<p><img src="../4.Views/4.6.2.OLAP_Analytics_Modules_C%26C_Views.png" alt="4.6.2.OLAP_Analytics_Modules_C&amp;C_Views.png"></p>
+<h2 id="element-catalog">Element Catalog</h2>
+<h3 id="components">Components</h3>
+<ul>
+<li><strong>&#60;&#60;Database&#62;&#62;AnalyticsModulesDatabase</strong>: The database used to store the <code>Triad</code> and the <code>AnalyticsGoal</code> entities as well as the related objects.</li>
+<li><strong>TriadRepository</strong>: The Repository will be accessed in order to provide a data access to the <code>Triad</code> objects in the Database. The database sill be accessed through JPA and will be local to the Analytics Modules macro component.</li>
+<li><strong>AnalyticsGoalRepository</strong>: The Repository will be accessed in order to provide a data access to the <code>AnalyticsGoal</code> objects in the Database. The database sill be accessed through JPA and will be local to the Analytics Modules macro component.</li>
+<li><strong>AnalyticsModuleService</strong>: The service executes direct calls over the repositories to save, update and retreive the different <code>Triad</code> and <code>AnalyticsGoal</code> objects as well as their related model entities.</li>
+<li><strong>AnalyticsModulesController</strong>: The controller exposes the RESTful methods through HTTP. The Analytics Methods can be assigned to existing Analytics Goals, which contacts the service, retreives the <code>AnalyticsGoal</code> object and assigns it the reference to the <code>AnalyticsMethodMetadata</code>. In a similar manner, whenever a <code>Triad</code> save request is made, the controller assembles the <code>Triad</code> with the reference <code>AnalyticsMethodMetadata</code>, the <code>IndicatorReference</code>, and the <code>VisualizerReference</code>. Then handles it to the Service, which in turn will contact the repository to handle the storage of it into the database.</li>
+<li><strong>&#60;&#60;MacroComponent&#62;&#62;OpenLAPWebClient</strong>: The macro component explained in section 4.7. It uses the RESTful methods exposed by the <code>AnalyticsModulesController</code> to access the methods of the macro component exposed here. It retrieves <code>Triad</code> entities as well as manages <code>AnalyticsGoals</code>. It also access the <code>&lt;&lt;MacroComponent&gt;&gt;AnalyticsMethods</code> to retreive the <code>AnalyticsMethodsMetadata</code> and associate it with selected <code>AnalyticsGoal</code> entities by the User of type Learner.</li>
+<li><strong>&#60;&#60;MacroComponent&#62;&#62;AnalyticsEngine</strong>: The macro component explained in secion 4.2. It uses the  It uses the RESTful methods exposed by the <code>AnalyticsModulesController</code> to access the methods of the macro component exposed here. It submits and retrieves Triads.</li>
+<li><strong>&#60;&#60;MacroComponent&#62;&#62;Visualizer</strong>: The Visualizer macro component is used by the <code>&lt;&lt;MacroComponent&gt;&gt;AnalyticsEngine</code> to provide the references to the different visualizations.</li>
+<li><strong>&#60;&#60;MacroComponent&#62;&#62;AnalyticsMethods</strong>: Similarly, the <code>&lt;&lt;MacroComponent&gt;&gt;AnalyticsMethods</code> is used by the <code>&lt;&lt;MacroComponent&gt;&gt;AnalyticsEngine</code> to provide the <code>AnalyticsMethodsMetadata</code> references of when creating <code>Triad</code> entities. Additionally, is accessed by the
+<code>&lt;&lt;MacroComponent&gt;&gt;OpenLAPWebClient</code> to associate the <code>AnalyticsMethodsMetadata</code> to existing <code>LarningGoal</code> entities.</li>
+</ul>
+<h3 id="connectors">Connectors</h3>
+<ul>
+<li><strong>JPA</strong>: The database access calls are made using JPA to the Database. A ORM can be used for it.</li>
+<li><strong>HTTP</strong>: The calls to the controller are made by the HTTP RESTful methods exposed by it. The OpenLAPWebClient will offer an interface for the user to interact with the Analytics Modules macro component.</li>
+<li><strong>uses</strong>: The Analytics Modules macro component will not have direct access over the instances of either the Analytics Modules or the Visualizers. The Analytics Engine will therefore provide information about their identifiers to the Analytics Modules and the Analytics Modules will store them in <code>Triad</code> objects. The objects stored are mere POJO representations for reference only.</li>
+<li>Other calls are made using traditional Java object calls.</li>
+</ul>
+<h2 id="context-diagram">Context Diagram</h2>
+<p><img src="../4.Views/4.2.2.Context_Diagram.png" alt="4.6.2.Context_Diagram.png"></p>
+<h2 id="variability-guide">Variability Guide</h2>
+<ul>
+<li>While the <code>AnalyticsGoals</code> can be added by Teacher Users, the Triads can only be created indirectly, when the <code>&lt;&lt;MacroComponent&gt;&gt;AnalyticsEngine</code> sends a request to save the references. The <code>&lt;&lt;MacroComponent&gt;&gt;AnalyticsEngine</code> also retreives the Triads whenever the user request to use an existing triad.</li>
+</ul>
+<h2 id="rationale">Rationale</h2>
+<p>The Analytics Methods macro component is a referencing component. It allows to perform two basic operations:</p>
+<ol>
+<li>Manage Analytics Goals.</li>
+<li>Manage Triads.</li>
+</ol>
+<p>The way the different operations are approached are however binded to the functioning of the flow of the Analytics Engine. This is the reason behind some decisions such as:</p>
+<ul>
+<li>Storing references to the Analytics Method, Indicator and Visualization in a <code>Triad</code>. Since the only make sense in the exercise of executing the complete flow, the Triads only make sense in the context of the Analytics Engine macro component. The Analytics Engine macro component then is able to access the required Indicator, Analytics Methods and Visualizations through the APIs those macro components provide (RESTful or otherwise). This is also the reason behind the Analytics Modules macro component residing in the same run-time environment as the Analytics Engine, since the first one acts very much like a lookup table for the second.</li>
+<li>Allowing the access to the saving of <code>Triad</code> only to the AnayticsEngine.
+The creation of the <code>AnalyticsGoal</code> entities is however a manual task and is totally dependent on the Users (of type Teacher). This particular method, and the binding of the <code>AnalyticsMethodMetadata</code> references to the Analytics Goals are then accessible to the <code>OpenLAPWebClient</code>.</li>
+</ul>
+<h2 id="related-views">Related Views</h2>
+<ul>
+<li>Section 4.6.1. describes the Module views for this macro module.</li>
+<li>Section 4.3. explains the Indicator Engine</li>
+<li>Section 4.5. explains the Analytics Methods</li>
+<li>Section 4.4. explains the Visualizer</li>
+<li>Section 4.2. Analytics Engine</li>
+</ul>
+
+		</div>
+
+		<script></script>
+	</body>
+</html>

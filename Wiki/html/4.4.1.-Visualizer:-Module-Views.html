@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>VISUALIZER: MODULE VIEWS</title>
+		<style>
+			/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+sup {
+   vertical-align: super;
+   font-size: smaller;
+}
+
+sub {
+  vertical-align: sub;
+  font-size: smaller;
+}
+
+/* Generic styles */
+body {
+	background: #f5f5f5;
+  color: #222;
+  font-family: 'Palatino Linotype','Book Antiqua',Palatino,FreeSerif,serif;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6,
+ul, ol,
+p,
+code, pre,
+hr {
+	line-height: 1.5em;
+	margin: 1.5em 0 0.5em 0;
+}
+
+*:first-child {
+	margin-top: 0;
+}
+
+/* Headers */
+h1, h2, h3, h4, h5, h6 {
+	font-weight: bold;
+}
+
+h1 {
+	font-size: 3.5em;
+}
+
+h2 {
+	font-size: 2.5em;
+}
+
+h3 {
+	font-size: 2em;
+}
+
+h4 {
+	font-size: 1.5em
+}
+
+h5 {
+	font-size: 1.2em;
+}
+
+h6 {
+	font-size: 1em;
+}
+
+/* Lists */
+ul, ol {
+	padding-left: 2em;
+}
+
+ul {
+	list-style-type: disc;	
+}
+
+ol {
+	list-style-type: decimal;
+}
+
+/* Code and pre */
+code, pre {
+	font-family: "Bitstream Vera Sans Mono", "Courier", monospace;
+}
+code {
+	background: none repeat scroll 0 0 #F8F8FF;
+  border: 1px solid #DEDEDE;
+  border-radius: 3px 	;
+  padding: 0 0.2em;
+}
+pre {
+	border-left: 5px solid #eee;
+	margin-left: 2em;	
+	padding-left: 1em;
+}
+pre > code {
+	background: transparent;
+	border: none;
+	padding: 0;
+}
+
+/* Links */
+a {
+  color: #261A3B;
+}
+
+a:visited {
+  color: #261A3B;
+}
+
+/* Inlines */
+strong {
+	font-weight: bold;
+}
+
+em {
+	font-style: italic;
+}
+
+/* Container */
+.container {
+	background: #FFF;
+	padding: 30px 50px;
+	margin: 0 auto;
+	width: 850px;
+}
+
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h1 id="visualizer-module-views">VISUALIZER: MODULE VIEWS</h1>
+<h2 id="primary-presentation">Primary Presentation</h2>
+<p><img src="../4.Views/4.4.1.OLAP_Visualizer_Architecture.png" alt="4.4.1.OLAP_Visualizer_Architecture"></p>
+<h2 id="element-catalog">Element Catalog</h2>
+<h3 id="package-controller">Package Controller</h3>
+<p>A controller package to hold the HTTP RESTful endpoints for the Visualization frameworks and methods upload. In addition, the controllers also provide an endpoint to get the client visualization code to be embedded in a Webpage. Furthermore, endpoints to manage the list of applicable visualizations for a certain data set (determined by static set of visualization rules) are also included. All endpoint can be accessed by client (Analytics Engine) by making an HTTP Request.</p>
+<ul>
+<li><strong>VisualizationEngineController</strong>: This class exposes HTTP endpoint to get the generated client Visualization code. The clients are expected to provide the framework and method details to the endpoint in order to get the correct visualization code.</li>
+<li><strong>VisualizationFrameworksController</strong>: This class exposes HTTP RESTful endpoints to perform CRUD operations on the Visualization Frameworks and their Methods. Researchers/Developers can work with existing Visualization Frameworks / Methods in the Visualizer as well as upload new ones whereas the normal users can simply View the existing ones.</li>
+<li><strong>VisualizationSuggestionsController</strong>: This class exposes HTTP RESTful endpoints to perform CRUD operations on the Visualization Suggestions (rules which state which visualization method represents which OLAPDataset configuration).</li>
+</ul>
+<h3 id="package-service">Package Service</h3>
+<p>The package service provides an abstraction and contains the business logic classes. These classes provide methods to be used by the Controllers.</p>
+<ul>
+<li><p><strong>VisualizationEngineService</strong>: This class contains methods which can be used to generate the client visualization code by providing the stored Visualization Framework id/name and its connected Visualization Method id/name.</p>
+</li>
+<li><p><strong>VisualizationFrameworksService</strong>: This class provides methods to search for existing Visualization Frameworks or Methods, as well as to update their attributes or remove them completely. Furthermore, the service also contains methods to handle the upload of Visualization Frameworks. These upload methods along with the bundled JAR file require configuration data (metadata) which acts as a manifest specifying exactly which frameworks, methods and data transformers are part of the file being uploaded.</p>
+</li>
+<li><p><strong>VisualizationSuggestionService</strong>: Service which provides methods retrieve and perform CRUD operations on the Visualization Suggestions. THe Visualization Suggestions are simple rules(entries) which connect an existing Visualization Method of a Visualization Framework with an OLAPDatasetColumnConfiguration.</p>
+</li>
+</ul>
+<h3 id="pakage-dao">Pakage dao</h3>
+<p>The dao package contains the classes which serve as the data access layer for handling the metadata of Visualization Frameworks,Methods and Suggestions.</p>
+<ul>
+<li><p><strong>DataTransformerMethodsRepository</strong>: An interface listing the methods for accessing the metadata of DataTransformers</p>
+</li>
+<li><p><strong>VisualizationFrameworkRepository</strong>: Provides a list of methods for accessing the metadata of Visualization Frameworks. Contains methods for retrieving, creation and removal of frameworks</p>
+</li>
+<li><p><strong>VisualizationMethodRepository</strong>: An interface listing the methods for performing CRUD operations on the metadata of Visualization Methods of a Visualization Framework</p>
+</li>
+</ul>
+<h2 id="package-framework">Package framework</h2>
+<p>The package framework contains the interfaces and abstract classes which are to be extended by new implementations of Visualization code generators and Data transformers</p>
+<ul>
+<li><p><strong>VisualizationCodeGenerator</strong>: An abstract class which contains the control flow implementation of generating visualization code for the client. This class contains two abstract methods which each new Visualization code generator will have to override, namely, the &quot;initializeDataSetConfiguration&quot; method and the &quot;visualizationCode&quot; method. The developer when overriding the &quot;initializeDataSetConfiguration&quot; method should specify what kind of input (OLAPDataSet configuration) and output (OLAPDataSet configuration) are expected by the visualization code generator, it should be noted that at the moment the output can left null. The overriden method &quot;visualizationCode&quot; contains the actual client visualization code.</p>
+</li>
+<li><p><strong>DataTransformer</strong>: An interface containing list of methods which need to be implemented by each concrete DataTransformer. The DataTransformer method to transform data will be called by the VisualizationCodeGenerator to transform the OLAPDataSet data received from the client to a representation which is understood by the Visualization code generation method.</p>
+</li>
+</ul>
+<h3 id="package-model">Package Model</h3>
+<p>Model package which holds all the model classes relevant to the Visualizer component.</p>
+<ul>
+<li><strong>TransformedData</strong>: Class which is envisioned to be a base class for polymorphic datatypes which represent the data after transformation is applied to it</li>
+</ul>
+<p>The following three model classes represent the properties stored in the database and details the relations they have between each other. These classes are also used as models for serialization and deserialization to/from JSON.</p>
+<ul>
+<li><p><strong>VisualizationFramework</strong>: Class representing the details of a Visualization Framework</p>
+</li>
+<li><p><strong>VisualizationMethod</strong>: Class representing the details of a Visualization Method belonging to a Visualization Framework</p>
+</li>
+<li><p><strong>VisualizationSuggestion</strong>: Class representing the details of a Visualization Suggestion. A Visualization Suggestion is a simple database entry containing a OLAPDatasetColumnConfiguration and its Visualization Method. These entries let the client receive suggestions of Visualization Methods for a given OLAPDatasetColumnConfiguration</p>
+</li>
+</ul>
+<h2 id="context-diagram">Context Diagram</h2>
+<p><img src="../4.Views/4.4.1.Context_Diagram.png" alt="4.4.1.Context_Diagram.png"></p>
+<h2 id="variability-guide">Variability Guide</h2>
+<ul>
+<li>The VisualizationCodeGenerator abstract class is meant to be extended by new code generators that Researchers / Developers create. These code generators will simply return the respective HTML+JS code as a String, to be sent to clients. In addition, the code generators also need to provide the OLAPDataset that they expect as input. The OLAPDataset will just include the column configuration without the actual data. The concrete implementation of the VisualizationCodeGenerator can be submitted as a bundled JAR through the API exposed in the VisualizationFrameworksController</li>
+<li>The DataTransformer interface provides a skeleton of the methods that are meant to be overriden by concrete implementations which the Researchers / Developers create. These concrete implementations will act as adapters which will transform the data (input) which will be in form of the OLAPDataset to TransformedData. The TransformedData object can then be used by the various VisualizationCodeGenerator to  generate the visualization code. Similar to the VisualizationCodeGenerators the concrete implementation of the data transformers(adapters) can be submitted as a bundled JAR through the API exposed in the VisualizationFrameworksController.</li>
+</ul>
+<h2 id="rationale">Rationale</h2>
+<ul>
+<li>The OLAPDataset (Column configuration) has to be included via an overriden method in each VisualizationCodeGenerator. Although, this would belong in the DataTransformer it was explicitly included in the VisualizationCodeGenerator due to the reason that a single DataTransformer can be reused by many VisualizationCodeGenerators.</li>
+</ul>
+<h2 id="related-views">Related Views</h2>
+<ul>
+<li>Section 4.4.2 explains the C&amp;C Views of the Visualizer</li>
+<li>Section 4.2 explains the Analytics Engine, which orchestrates the interaction with the Visualizer</li>
+<li>Section 4.5 explains the Analytics Methods, which process the data that is to be visualized</li>
+<li>Section 4.6 explains the Analytics Modules, which holds Triads that allow to save configurations between Indicators, Analytics Methods and Visualizations</li>
+</ul>
+
+		</div>
+
+		<script></script>
+	</body>
+</html>

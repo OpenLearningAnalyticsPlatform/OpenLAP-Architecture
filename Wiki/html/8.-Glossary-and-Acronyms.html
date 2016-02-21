@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>GLOSSARY</title>
+		<style>
+			/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+sup {
+   vertical-align: super;
+   font-size: smaller;
+}
+
+sub {
+  vertical-align: sub;
+  font-size: smaller;
+}
+
+/* Generic styles */
+body {
+	background: #f5f5f5;
+  color: #222;
+  font-family: 'Palatino Linotype','Book Antiqua',Palatino,FreeSerif,serif;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6,
+ul, ol,
+p,
+code, pre,
+hr {
+	line-height: 1.5em;
+	margin: 1.5em 0 0.5em 0;
+}
+
+*:first-child {
+	margin-top: 0;
+}
+
+/* Headers */
+h1, h2, h3, h4, h5, h6 {
+	font-weight: bold;
+}
+
+h1 {
+	font-size: 3.5em;
+}
+
+h2 {
+	font-size: 2.5em;
+}
+
+h3 {
+	font-size: 2em;
+}
+
+h4 {
+	font-size: 1.5em
+}
+
+h5 {
+	font-size: 1.2em;
+}
+
+h6 {
+	font-size: 1em;
+}
+
+/* Lists */
+ul, ol {
+	padding-left: 2em;
+}
+
+ul {
+	list-style-type: disc;	
+}
+
+ol {
+	list-style-type: decimal;
+}
+
+/* Code and pre */
+code, pre {
+	font-family: "Bitstream Vera Sans Mono", "Courier", monospace;
+}
+code {
+	background: none repeat scroll 0 0 #F8F8FF;
+  border: 1px solid #DEDEDE;
+  border-radius: 3px 	;
+  padding: 0 0.2em;
+}
+pre {
+	border-left: 5px solid #eee;
+	margin-left: 2em;	
+	padding-left: 1em;
+}
+pre > code {
+	background: transparent;
+	border: none;
+	padding: 0;
+}
+
+/* Links */
+a {
+  color: #261A3B;
+}
+
+a:visited {
+  color: #261A3B;
+}
+
+/* Inlines */
+strong {
+	font-weight: bold;
+}
+
+em {
+	font-style: italic;
+}
+
+/* Container */
+.container {
+	background: #FFF;
+	padding: 30px 50px;
+	margin: 0 auto;
+	width: 850px;
+}
+
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h1 id="glossary">GLOSSARY</h1>
+<ul>
+<li><strong>Analytics Goal</strong>: An Analytics Goal represents a  particular set of goals for a Teacher or for a Researcher/Developer. It is represented in the OpenLAP system as a description of the Analytics Goal itself and a correlation of Analytics Method. Whenever the Analytics Goal is selected for a particular interaction, the associated Analytics Methods will be shown as suggestions for creating the Triad.</li>
+<li><strong>Configuration</strong>: A configuration represents the mapping between the outputs and inputs of the different components of a Triad. Normally refers to the configuration of all the components in a particular Triad, i.e. the mapping between the output of an Indicator to the Input of an Analytics Method as well as the output of the same Analytics Method to the input of the Visualization specified in the Triad. A configuration has its own model and methods to guarantee that the data types are compatible. The configuration can be done manually, or if the types are compatible, left as default. The configuration influences how the data is interpreted in both the Analytics Method and the Visualization.</li>
+<li><strong>Macro Component</strong>: This refers to one of the seven macro components of the Open Learning Analytics Platform: Data Collection and Data Storage, Analytics Engine, Indicator Engine, Visualizer, Analytics Methods, Analytics Modules, OpenLAP Web Client.</li>
+<li><strong>Question</strong>: A Question represents something the user of the OpenLAP wants to answer using the available data. The question will be written in natural form and the OpenLAP will attempt to answer the question either by using existing Indicators or by creating a new one with the help of the user. Questions are available to other users after they are created.</li>
+<li><strong>Triad</strong>: A triad consist of a grouping of the references to an Indicator, an Analytics Method and a Visualization.</li>
+</ul>
+<h1 id="acronyms">Acronyms</h1>
+<ul>
+<li><strong>C&amp;C</strong>: Stands for &quot;Components and Connectors&quot;. The view that describes the components and connectors of the different Macro Components.</li>
+</ul>
+<h1 id="naming-conventions">Naming Conventions</h1>
+<h2 id="images">Images</h2>
+<ul>
+<li>Architecture figures: <code>OLAP_[Section]_[name].[format]</code></li>
+</ul>
+<h2 id="use-cases">Use Cases</h2>
+<ul>
+<li>Main Scenario Use Cases: <code>OLAP_SUC_[Number]</code>, where <code>SUC</code> stands for Scenario Use Case (for the main scenarios, other additional Use Cases developed should use <code>UC</code> instead.</li>
+</ul>
+
+		</div>
+
+		<script></script>
+	</body>
+</html>

@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>SYSTEM OVERVIEW</title>
+		<style>
+			/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+sup {
+   vertical-align: super;
+   font-size: smaller;
+}
+
+sub {
+  vertical-align: sub;
+  font-size: smaller;
+}
+
+/* Generic styles */
+body {
+	background: #f5f5f5;
+  color: #222;
+  font-family: 'Palatino Linotype','Book Antiqua',Palatino,FreeSerif,serif;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6,
+ul, ol,
+p,
+code, pre,
+hr {
+	line-height: 1.5em;
+	margin: 1.5em 0 0.5em 0;
+}
+
+*:first-child {
+	margin-top: 0;
+}
+
+/* Headers */
+h1, h2, h3, h4, h5, h6 {
+	font-weight: bold;
+}
+
+h1 {
+	font-size: 3.5em;
+}
+
+h2 {
+	font-size: 2.5em;
+}
+
+h3 {
+	font-size: 2em;
+}
+
+h4 {
+	font-size: 1.5em
+}
+
+h5 {
+	font-size: 1.2em;
+}
+
+h6 {
+	font-size: 1em;
+}
+
+/* Lists */
+ul, ol {
+	padding-left: 2em;
+}
+
+ul {
+	list-style-type: disc;	
+}
+
+ol {
+	list-style-type: decimal;
+}
+
+/* Code and pre */
+code, pre {
+	font-family: "Bitstream Vera Sans Mono", "Courier", monospace;
+}
+code {
+	background: none repeat scroll 0 0 #F8F8FF;
+  border: 1px solid #DEDEDE;
+  border-radius: 3px 	;
+  padding: 0 0.2em;
+}
+pre {
+	border-left: 5px solid #eee;
+	margin-left: 2em;	
+	padding-left: 1em;
+}
+pre > code {
+	background: transparent;
+	border: none;
+	padding: 0;
+}
+
+/* Links */
+a {
+  color: #261A3B;
+}
+
+a:visited {
+  color: #261A3B;
+}
+
+/* Inlines */
+strong {
+	font-weight: bold;
+}
+
+em {
+	font-style: italic;
+}
+
+/* Container */
+.container {
+	background: #FFF;
+	padding: 30px 50px;
+	margin: 0 auto;
+	width: 850px;
+}
+
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h1 id="system-overview">SYSTEM OVERVIEW</h1>
+<h2 id="open-learning-analytics-platform-openlap-">Open Learning Analytics Platform (OpenLAP)</h2>
+<p>The Open Learning Analytics Platform (OpenLAP) of the RWTH is a project which objective is to provide an ecosystem for Learning Analytics for different stakeholders. The platform will gather data from multiple sources, utilize different methods and apply them to provide insight on the data to the users (Learners, Teachers and Researchers/Developers).</p>
+<p>The main users of the project are:</p>
+<ul>
+<li><strong>Students:</strong> Will utilize the data to provide themselves with insight on course performance, comparison with other students and/or cohorts, receive recommendations on learning materials and subjects, revise achievements and goals in courses and education process. The student will be able to create inquiries and utilize available data from different sources to approach answers to these inquiries.</li>
+<li><strong>Teachers:</strong> Uses the OpenLAP as a complement of the Learning Management Systems. Utilizes data visualization of the OpenLAP to personalize dashboards with information about student performance, comparison with cohorts, monitoring of activity.</li>
+<li><strong>Developers/Researchers:</strong> Can create new Analytics Methods and Analytics Goals in the Analytics Modules in order to provide other users new ways of making sense of data and mechanisms to process the data. Can also provide new ways of visualizing the data. Can develop descriptive and predictive models for data analysis as Analytic Methods. Can create modules for the collection of data from third party applications and integrate those modules on the platform. Can use the platform to create custom indicators and provide insight to particular research inquiries.</li>
+<li><strong>Administrators:</strong> Administrators an perform operations over the administrative and non-functional aspects of the OpenLAP. Maintains the platform, solves issues and allows new Analytics Modules to be used by the users. Has complete access to the functionalities of the OpenLAP.</li>
+</ul>
+<h2 id="functional-requirements">Functional Requirements</h2>
+<p>The functional requirements are gathered in base of three main scenarios that derive the main functionalities of the system. The scenarios will be treated as the main Use Cases of the system and will be presented here as such, since they will be the main drivers of the OpenLAP architecture.</p>
+<h3 id="scenarios">SCENARIOS</h3>
+<p>The scenarios are taken from section 4.2 and section 4.4 of the paper <em>Toward an open learning analytics ecosystem</em> (Chatti et. al.). They represent the main usage of the system. They are divided by Teacher, Student and Developer/Researcher Scenarios with the addition of two more: the general use scenarios New Indicator Generation and a system interaction scenario Indicator Data Request.</p>
+<h3 id="user-scenarios">User Scenarios</h3>
+<p>User scenarios desrcive those that are executed directly by users of the OpenLAP. They must interact directly with the platform in order to realize this scenarios.</p>
+<h5 id="teacher-scenario">Teacher Scenario</h5>
+<p>A teacher utilizes an external LMS system to administer courses. The teacher has access to a personalized dashboard of the OpenLAP and from it it can see an overview of courses with certain indicators. The indicators are the main information source to improve teaching. The dashboard provides predefined indicators. Examples of the indicators include: involvement of students on forums, participation of students in course, document usage statistics, progress of students on assignments, learning materials discussed in forums. The teacher can also create new indicators from an indicator editor from which can specify which indicator to use and what visualization to apply to the indicator. The creation of indicators is made available to other users.</p>
+<h5 id="student-scenario">Student Scenario</h5>
+<p>Uses the OpenLAP system to collect data from the university&#39;s Learning Management System, MOOCs, Blogs, Social Networks, YouTube, and forums. The student can also chose which activities are collected by the OpenLAP. Data privacy is paramount and by default the student is the only user with access to the collected data. The student can choose what data is public and for how long.</p>
+<h5 id="developer-scenario">Developer Scenario</h5>
+<p>Developers and Researchers can develop and register third party application data collection to the OpenLAP. The applications can upload the data to the OpenLAP through a well defined framework. Developers and researchers can as well submit visualization techniques to the platform and these are made available to other users to utilize on their inquiries. Similarly, they can register, through an API, different Analytics Methods to analyze the data and these will be made available to all users. The developer or researcher can also create indicators or use existing ones.</p>
+<h3 id="system-scenarios">System Scenarios</h3>
+<p>This scenarios are not directly related to any particular user and can be either performed by any user directly.</p>
+<h5 id="new-indicator-generation-scenario">New Indicator Generation Scenario</h5>
+<p>As part of a general user scenario, the New Indicator Generation scenario is available to all registered users of the platform and illustrates one of the most common usages of the OpenLAP. The user selects a goal and enters a question in the question / indicator editor. The OpenLAP system has a component which analyzes the question and suggests similar questions (the question / indicators / metrics component). If the user selects one of the suggested questions, the question / indicator editor will allow the user to select indicators for the question. On the other case if the user creates a new question, the indicators are made available and the user can select which ones to associate to the new question or generate new indicators. When the user selects existing indicators, the OpenLAP makes suggestions of instances of the indicator. The user can select those instances or create a new instance with different method and visualization techniques. Then within the Question / Indicator editor, the user is presented with the visualization code to be rendered. If the user is satisfied, they can use the code to embed it in any application.</p>
+<h5 id="indicator-data-request-scenario">Indicator Data Request Scenario</h5>
+<p>This scenario involves a third party application making a request to obtain visual data from the OpenLAP. The purpose of it is twofold: to illustrate the interaction of an external system with the OpenLAP and to expose some of the inner workings of the OpenLAP, for this reason, the description of this particular scenario goes beyond only the interactions of the external system with the OpenLAP. In this scenario an indicator request is sent to the OpenLAP from the third party application. The OpenLAP verifies the validity of the request and proceeds as follows:</p>
+<ol>
+<li>The Analytics Engine obtains the indicator reference from the Analytics Modules which contains the Indicator reference, the Analytics Method used, and the particular visualization for the indicator. This grouping of Indicator, Analytics Method and Visualization (along with the mappings of the inputs/outputs) is referred to as a <em>Triad</em>.</li>
+<li>The Analytics Engine obtains the query from the question / indicators / metrics component (Indicator Engine).</li>
+<li>The Analytics Engine executes the query to the Data Collection and Data Store component.</li>
+<li>The Analytics Engine uses the Analytics Method to perform data analysis.</li>
+<li>The Analytics Engine sends transformed data to the Visualizer component.</li>
+<li>The Visualizer transforms data to a visualization form and returns code for visualization, which is delivered by the Analytics Engine.</li>
+</ol>
+<h3 id="use-case-diagrams">USE CASE DIAGRAMS</h3>
+<p>From the previous scenarios, the following use case diagrams can be derived. They cover most of the main functionalities of the system and are created to provide a complete coverage of the scenarios described above.</p>
+<h4 id="general-user">General User</h4>
+<ul>
+<li><strong>View/Modify Dashboard:</strong> The user can see the result of executing the Triads associated with saved indicators on a Dashboard. The user saves the code for Viewing the Triad Execution. Modifying the dashboard implies adding, or removing indicators from it.</li>
+<li><strong>Associate Indicator to Question:</strong> A user must associate a question to a set of indicators. to answer the question which can be an existing Indicator, a template from an existing Indicator or a new Indicator.</li>
+<li><strong>Create Question:</strong> Users can create new questions into the OpenLAP system and obtain the view of the execution of the Triad that gets generated by passing the data of an Indicator to an Analytics Method and visualizing with with a particular Technique of the Visualizer.</li>
+<li><strong>Generate Indicator:</strong> Allows to create a new Indicator from the Rules Engine and the data available.</li>
+<li><strong>Generate Triad:</strong> Once an Indicator has been Generated, the User can associate the Indicator with an Analytics Method to analyze the obtained data of the Indicator. The Indicator can also be associated to a visualization technique to obtain a visualization of the data. The grouping of the Indicator/Analytics Method/Visualization along with the configuration of the Indicator and Analytics Methods inputs and outputs is called a <em>Triad</em>.</li>
+<li><strong>View Triad Execution:</strong> The triad can be executed once it has been generated. The triad will use the Indicator data on the Analytics Method selected and visualize it with the Visualization technique selected using the mapping configuration saved along with the Triad.</li>
+<li><strong>Request Creation / View Analytics Goals:</strong> Users can create/Modify/View Analytics Goals (also referred as Analytics Modules). The Administrator allows an Analytics Goal to be used bu other users.</li>
+<li><strong>Administer Data Collection and Data Availability:</strong> Users can add, modify or remove data collection from third party applications as well as administer who is able to see their collected data and for how long.
+The Use Case Diagram illustrates the General User Use Cases.</li>
+</ul>
+<p><img src="../1.SystemOverview/OLAP_SystemOverview_UseCaseDiagram_GeneralUser.png" alt="OpenLAP_SystemOverview_UseCaseDiagram_GeneralUser"></p>
+<h4 id="student">Student</h4>
+<p>For the main scenarios, the Student will be able to perform the same Use Cases as a general user. The difference with other actors is the particular data that the student has access to, but this is independent of the Use Cases themselves.</p>
+<p>The Use Cases Diagram is shown in the figure.</p>
+<p><img src="../1.SystemOverview/OLAP_SystemOverview_UseCaseDiagram_Student.png" alt="OpenLAP_SystemOverview_UseCaseDiagram_Student.png"></p>
+<h4 id="teacher">Teacher</h4>
+<p>Similar to the Student, for the main scenarios, the Teacher will be able to perform the same Use Cases as a general user. The difference with other actors is the particular data that the teacher has access to, but this is independent of the Use Cases themselves. Additionally, the Teacher is able to classify the Analytics Methods into Analytics Goals whenever she or he determines that it is relevant for a particular Analytics goal.</p>
+<p>The Use Cases Diagram is shown in the figure.</p>
+<p><img src="../1.SystemOverview/OLAP_SystemOverview_UseCaseDiagram_Teacher.png" alt="OpenLAP_SystemOverview_UseCaseDiagram_Teacher"></p>
+<h4 id="developer-researcher">Developer/Researcher</h4>
+<p>In addition to the General User Use Cases, the Researcher/Developer can:</p>
+<ul>
+<li><strong>Register Data collection for Third Party Application:</strong> This Use Case corresponds to the Developer/Researcher Scenario, where a Developer/Researcher submits a mechanism to collect data for a Third Party Application. This is only the registration of a service account and the purpose of registering the external application is to obtain authorization to collect the data.</li>
+<li><strong>Create/View/Update Analytics Methods:</strong> For the Developer/Researcher Scenario, the Developer/Researcher can create (and modify) new Analytics methods in order to process the data within the OpenLAP.</li>
+<li><strong>Create/View/Update Visualizations:</strong> Finally, the Developer/Researcher Scenario describes a mechanism for using a customized Visualization for an indicator. The visualization is developed by this user and submitted to the OpenLAP.</li>
+</ul>
+<p>The figure below illustrates this in a Use Case Diagram.</p>
+<p><img src="../1.SystemOverview/OLAP_SystemOverview_UseCaseDiagram_DeveloperResearcher.png" alt="OpenLAP_SystemOverview_UseCaseDiagram_DeveloperResearcher"></p>
+<h3 id="administrator">Administrator</h3>
+<p>Administrators have access to all the functionalities of the OpenLAP. Additionally, they are initially the only users that can authorize Analytics Goals. Analytics Methods can only be related to authorized Analytics Goals.</p>
+<p>The figure below illustrates this in a Use Case Diagram.</p>
+<p><img src="../1.SystemOverview/OpenLAP_SystemOverview_UseCaseDiagram_Administrator.png" alt="OpenLAP_SystemOverview_UseCaseDiagram_Administrator"></p>
+<h4 id="third-party-application">Third Party Application</h4>
+<ul>
+<li><strong>Submit Usage Data:</strong> This is implied on the Student Scenario and the Developer Scenario where a Third Party Application sends data to the OpenLAP.</li>
+</ul>
+<p>These are illustrated in the figure as a Use Case Diagram.</p>
+<p><img src="../1.SystemOverview/OLAP_SystemOverview_UseCaseDiagram_ThirdPartyApplication.png" alt="OpenLAP_SystemOverview_UseCaseDiagram_ThirdPartyApplication"></p>
+<h3 id="use-case-specifications">USE CASE SPECIFICATIONS</h3>
+<p>This subsection will present a Use Case Specification Table for each of the Use Cases depicted in the Use Case Diagrams of the previous subsection. This will allows a more comprehensive description of each of the Use Cases and will also assign a number to each one. This information is the basis of the Architecture presented in the rest of this documentation.</p>
+<p>The naming convention for the Use Cases is: <code>OpenLAP_SUC_[Number]</code>, where <code>SUC</code> stands for Scenario Use Case (for the main scenarios, other additional Use Cases developed should use <code>UC</code> instead.</p>
+<h4 id="openlap_suc_01-view-modify-dashboard">OpenLAP_SUC_01: View/Modify Dashboard</h4>
+<table>
+<tbody>
+<tr>
+<td><b>Use Case Element</b></td>
+<td><b>Description</b></td>
+</tr>
+<tr>
+<td>Use Case Number</td>
+<td>OpenLAP_SUC_01</td>
+</tr>
+<tr>
+<td>Use Case Name</td>
+<td>View/Modify Dashboard</td>
+</tr>
+<tr>
+<td>Use Case Description</td>
+<td>The user can see the result of executing the Triads associated with saved indicators on a Dashboard. The user saves the code for Viewing the Triad Execution. The user can modify the dashboard by adding or removing indicators from it.</td>
+</tr>
+<tr>
+<td>Primary Actor</td>
+<td>General User</td>
+</tr>
+<tr>
+<td>Precondition</td>
+<td>The user exists and is logged into the OpenLAP system.</td>
+</tr>
+<tr>
+<td>Basic Flow</td>
+<td>
+<ol>
+<li>The user enters the OpenLAP Dashboard.</li>
+<li>The OpenLAP system executes the Triads and shows the User&#39;s Dashboard with all the resulting indicators that the User has added to it.</li>
+</ol>
+</td>
+</tr>
+<tr>
+<td>Alternate Flow: Adding an indicator to the Dashboard</td>
+<td>
+<ol>
+<li>The user enters the OpenLAP system dashboard.</li>
+<li>The OpenLAP System shows the user the Dashboard with the current indicators and the option to add an from a new Question</li>
+<li>The user selects the option to add an Indicator to the Dashboard.</li>
+<li>The OpenLAP system continues on OpenLAP_SUC_02: Create Question</li>
+</ol>
+</td>
+</tr>
+<tr>
+<td>Alternate Flows: Remove Indicator from Dashboard</td>
+<td>This flow is triggered when the user selects to remove one Indicator from the Dashboard instead of Selection the option to add a new Indicator to the Dashboard.
+<ol>
+<li>The user selects to remove an indicator from the Dashboard</li>
+<li>The OpenLAP system asks for confirmation of removal of the Indicator</li>
+<li>The user confirms removal</li>
+<li>The OpenLAP system returns to the Dashboard with the indicator removed from it.</li>
+</ol>
+</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="openlap_suc_02-create-question">OpenLAP_SUC_02: Create Question</h4>
+<table>
+<tbody>
+<tr>
+<td>
+<p><strong>Use Case Element</strong></p>
+</td>
+<td>
+<p><strong>Description</strong></p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Use Case Number</p>
+</td>
+<td>
+<p>OpenLAP_SUC_02</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Use Case Name</p>
+</td>
+<td>
+<p>General User General Create Question</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Use Case Description</p>
+</td>
+<td>
+<p>The user can create new questions into the OpenLAP system and obtain the view of the execution of the Triad that gets generated by passing the data of an Indicator to an Analytics Method and visualizing with with a particular technique of the Visualizer.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Primary Actor</p>
+</td>
+<td>
+<p>General User</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Precondition</p>
+</td>
+<td>
+<p>The user exists and is logged into the OpenLAP system. The user is in the Questions / Indicator Editor.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Basic Flow</p>
+</td>
+<td>
+<ol>
+<li>They OpenLAP system presents an interface where the user must select an Analytics Goal and enter a question.</li>
+<li>The user enters ans Analytics Goal into and a question into the system.</li>
+<li>The OpenLAP system suggest similar questions related to the entered question and an option to create a new question.
+</li>
+<li>The user selects one of the suggested questions.</li>
+<li>The OpenLAP system shows the indicator instances associated with the question.</li>
+<li>The user user selects one of the indicator instances.</li>
+<li>The OpenLAP System continues on OpenLAP_SUC_06: View Triad Execution.</li>
+</ol>
+</td>
+</tr>
+<tr>
+<td>
+<p>Alternate Flows: The user selects to Create a Question.</p>
+</td>
+<td>
+<p>This flow triggers at The OpenLAP system suggest similar questions related to the entered question and an option to create a new question.</p>
+<ol>
+<li>The user chooses to create a new question.</li>
+<li>The OpenLAP system asks to enter the question and an Analytics Goal</li>
+<li>The user Selects one of the Analytics Goals for the question.</li>
+<li>The OpenLAP system continues on OpenLAP_SUC_03: Associate Indicator to Question</li>
+<li>The OpenLAP system continues on OpenLAP_SUC_05: Generate Triad</li>
+<li>The OpenLAP System continues on OpenLAP_SUC_06: View Triad Execution with the selected Triad</li>
+</ol>
+</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="openlap_suc_03-associate-indicator-to-question">OpenLAP_SUC_03: Associate Indicator to Question</h4>
+<table>
+<tbody>
+<tr>
+<td><b>Use Case Element</b></td>
+<td><b>Description</b></td>
+</tr>
+<tr>
+<td>Use Case Number</td>
+<td>OpenLAP_SUC_03</td>
+</tr>
+<tr>
+<td>Use Case Name</td>
+<td>Associate Indicator to Question</td>
+</tr>
+<tr>
+<td>Use Case Description</td>
+<td>The user must associate a question to a set of indicators to answer the question which can be an existing Indicator, a template from an existing Indicator or a new Indicator.</td>
+</tr>
+<tr>
+<td>Primary Actor</td>
+<td>General User</td>
+</tr>
+<tr>
+<td>Precondition</td>
+<td>The user exists and is logged into the OpenLAP system. A new Question is being created in the Question/Indicator editor.</td>
+</tr>
+<tr>
+<td>Basic Flow</td>
+<td>
+<ol>
+<li>
+The OpenLAP system shows the existing indicators with an option to use them directly or as a template for each. Additionally an option for creating a new Indicator is shown.
+</li>
+<li>
+The user select to use one of the existing indicators directly.
+</li>
+</ol>
+</td>
+</tr>
+<tr>
+<td>Alternate Flows: Use existing Indicator as Template</td>
+<td>This Flow is triggered when the user selects to use an Indicator as a Template in the basic flow.
+</td>
+</tr>
+<tr>
+<td>Alternate Flows: Create Indicator</td>
+<td>This alternate flow is show in OpenLAP_SUC_04: Generate Indicator</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="openlap_suc_04-generate-indicator">OpenLAP_SUC_04: Generate Indicator</h4>
+<table>
+<tbody>
+<tr>
+<td><strong>Use Case Element</strong></td>
+<td><strong>Description</strong></td>
+</tr>
+<tr>
+<td>Use Case Number</td>
+<td>OpenLAP_SUC_04</td>
+</tr>
+<tr>
+<td>Use Case Name</td>
+<td>Generate Indicator</td>
+</tr>
+<tr>
+<td>Use Case Description</td>
+<td>The user creates a new Indicator from the Rules Engine and the data available..</td>
+</tr>
+<tr>
+<td>Primary Actor</td>
+<td>General User</td>
+</tr>
+<tr>
+<td>Precondition</td>
+<td>The user exists and is logged into the OpenLAP system. The user is in the Indicator Generator and has selected to Generate an Indicator.</td>
+</tr>
+<tr>
+<td>Basic Flow</td>
+<td>
+<ol>
+<li>The OpenLAP system presents the user with the possible rules and the data where the user can apply to the rules.</li>
+<li>The user picks the indicator rule and assigns the data to apply on the rules.</li>
+<li>The OpenLAP system generates the indicator and presents the user with possible filters for the indicator to refine the information</li>
+<li>The user selects which indicators to use over the Generated Indicator (if any).</li>
+</ol>
+</td>
+</tr>
+<tr>
+<td>Alternate Flows</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="openlap_suc_05-generate-triad">OpenLAP_SUC_05: Generate Triad</h4>
+<table>
+<tbody>
+<tr>
+<td><strong>Use Case Element</strong></td>
+<td><strong>Description</strong></td>
+</tr>
+<tr>
+<td>Use Case Number</td>
+<td>OpenLAP_SUC_05</td>
+</tr>
+<tr>
+<td>Use Case Name</td>
+<td>Generate Triad</td>
+</tr>
+<tr>
+<td>Use Case Description</td>
+<td>Once an Indicator has been Generated, the User can associate the Indicator with an Analytics Module to analyze the obtained data of the Indicator. The Indicator can also be associated to a visualization technique to obtain a visualization of the data. The grouping of the Indicator/Analytics Method/Visualization is called a Triad.</td>
+</tr>
+<tr>
+<td>Primary Actor</td>
+<td>General User</td>
+</tr>
+<tr>
+<td>Precondition</td>
+<td>The user exists and is logged into the OpenLAP system. At least an Indicator exist and has been selected. There exists at least an Analytics Method and a Visualization on the OpenLAP system.</td>
+</tr>
+<tr>
+<td>Basic Flow</td>
+<td>
+<ol>
+<li>The OpenLAP system presents the user with the suggested Analytics Methods as well as Visualizations and asks the user to select an Analytics Method and a Visualization technique and requests for confirmation or change of the mapping.</li>
+<li>The user selects one analytics method and a Visualization technique.</li>
+<li>The OpenLAP system presents the user with a default mapping for the data fields of the Indicator to the inputs of the Analytics Method.</li>
+<li>The user selects the default mapping between the outputs of the Indicator Data and the inputs of the Analytics Method.</li>
+<li>The OpenLAP system confirms the mapping and validates it.</li>
+<li>The OpenLAP system presents the user with a default mapping for the data fields of the Analytics Method and the inputs of the Visualization technique and requests for confirmation or change of the mapping.</li>
+<li>The user selects the default mapping between the outputs of the Analytics Method and the inputs of the visualization technique.</li>
+<li>The OpenLAP system confirms the mapping and validates it.</li>
+<li>The user confirms the selection.</li>
+</ol>
+</td>
+</tr>
+<tr>
+<td>Alternate Flow: Mapping Error</td>
+<td>This alternate flow is triggered if either the mapping of the fields from the Indicator Data to the Analytics Method or from the Analytics Method to the Visualization technique are not valid.</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="openlap_suc_06-view-triad-execution">OpenLAP_SUC_06: View Triad Execution</h4>
+<table>
+<tbody>
+<tr>
+<td><b>Use Case Element</b></td>
+<td><b>Description</b></td>
+</tr>
+<tr>
+<td>Use Case Number</td>
+<td>OpenLAP_SUC_06</td>
+</tr>
+<tr>
+<td>Use Case Name</td>
+<td>View Triad Execution</td>
+</tr>
+<tr>
+<td>Use Case Description</td>
+<td>The user can submit a Triad for execution once it has been generated. The triad will use the Indicator data on the Analytics Method selected and visualize it with the Visualization technique selected using the mapping configuration saved along with the Triad.</td>
+</tr>
+<tr>
+<td>Primary Actor</td>
+<td>General User</td>
+</tr>
+<tr>
+<td>Precondition</td>
+<td>The Triad exists in the OpenLAP system. There is a secure connection between the OpenLAP system and the Third Party Application.</td>
+</tr>
+<tr>
+<td>Basic Flow</td>
+<td>
+<ol>
+<li>The user sends and indicator data request with a Triad to the corresponding endpoint of the OpenLAP system (The Analytics Engine).</li>
+<li>The OpenLAP system returns the processed result with visualization to the User application with a status code and a time-stamp.</li>
+</ol>
+</td>
+</tr>
+<tr>
+<td>Alternate Flows</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="openlap_suc_07-administer-data-collection-and-data-availability">OpenLAP_SUC_07: Administer Data Collection and Data Availability</h4>
+<table>
+<tbody>
+<tr>
+<td><b>Use Case Element</b></td>
+<td><b>Description</b></td>
+</tr>
+<tr>
+<td>Use Case Number</td>
+<td>OpenLAP_SUC_07</td>
+</tr>
+<tr>
+<td>Use Case Name</td>
+<td>Administer Data Collection</td>
+</tr>
+<tr>
+<td>Use Case Description</td>
+<td>The User can add, modify or remove Data Collection from external source or application.</td>
+</tr>
+<tr>
+<td>Primary Actor</td>
+<td>General User</td>
+</tr>
+<tr>
+<td>Precondition</td>
+<td>The user exists and is logged into the OpenLAP system. The user is in the interface for Administering the Data Collection from external sources or applications. For modifying and removing the Data Collection of an external source or application, the data collection must already be set up for the user. For adding the Data Collection of an external source or application, the module that allows the external source or application Data collection must exist in the system.</td>
+</tr>
+<tr>
+<td>Basic Flow: Adding Data Collection from external source or application.</td>
+<td>
+<ol>
+<li>The OpenLAP system shows all the current Data Collection from external sources and applications, an option to modify each one, an option to remove each one of them and an option to add a new Data Collection from external source or application.</li>
+<li>The user selects to add the Data Collection from external source or application.</li>
+<li>The OpenLAP system shows a list of the available data collection sources for external sources and applications.</li>
+<li>The user selects one of the sources for data collection.</li>
+<li>The OpenLAP system presents the user with the authorization screen of the respective source for data collection.</li>
+<li>The user access the source for data collection and authorizes the OpenLAP system for the collection of data.</li>
+<li>The OpenLAP confirms the authorization and shows a list of roles to authorize data access to.</li>
+<li>The user selects the user roles and selects which are authorized to read the data.</li>
+<li>The OpenLAP confirms the permissions for the data access and the success at adding the external source or application data collection.</li>
+<li>The OpenLAP finishes the use case.</li>
+</ol>
+</td>
+</tr>
+<tr>
+<td>Alternate Flows: Modifying/Deactivating Data Collection of an external source or application.</td>
+<td>This Flow is triggered if the user selects to Modify an existing Data Collection from external source or application.
+<ol>
+<li>The user selects to modify an existing Data Collection of an external source or application.</li>
+<li>The OpenLAP system presents the option to deactivate the data collection and a list of the users by role with an option to provide access to read data for each role as well as an option to save the settings.</li>
+<li>The user makes changes to the roles view persimssions on the Data Collection of an external source or application and selects the option for saving the changes.</li>
+<li>The OpenLAP system confirms the changes done to the Data Collection of an external source or application settings and finishes the use case.</li>
+</ol>
+</td>
+</tr>
+<tr>
+<td>Alternate Flow: Removing Data Collection of an external source or application.</td>
+<td>This Flow is triggered if the user selects to Remove an existing Data Collection from external source or application.
+<ol>
+<li>The user selects to remove an existing Data Collection from external source or application.</li>
+<li>The OpenLAP system asks for confirmation of the removal of the Data Collection from external source or application.</li>
+<li>The user confirms the removal of the Data Collection from external source or application.</li>
+<li>The OpenLAP confirms the removal and finishes the use case.</li>
+</ol>
+</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="openlap_suc_08-request-creation-view-analytics-goals">OpenLAP_SUC_08: Request Creation/View Analytics Goals</h4>
+<table>
+<tbody>
+<tr>
+<td><strong>Use Case Element</strong></td>
+<td><strong>Description</strong></td>
+</tr>
+<tr>
+<td>Use Case Number</td>
+<td>OpenLAP_SUC_08</td>
+</tr>
+<tr>
+<td>Use Case Name</td>
+<td>Request Creation/View Analytics Goals</td>
+</tr>
+<tr>
+<td>Use Case Description</td>
+<td>The User can create/Modify/View Analytics Goals (also referred as Analytics Modules). The Administrator allows an Analytics Goal to be used by other users.</td>
+</tr>
+<tr>
+<td>Primary Actor</td>
+<td>General Users</td>
+</tr>
+<tr>
+<td>Precondition</td>
+<td>The User is logged into the system and is on a view to create and update Analytics Goals. For associating Analytics Methods to Analytics Goals, both the Analytics Goal and the Analytics Method must exist. The association can only be done by the Developer/Researcher that updated the Analytics Method or by Administrators</td>
+</tr>
+<tr>
+<td>Basic Flow: Creation of a Analytics Goal</td>
+<td>
+<ol>
+<li>
+The System shows the user the option to create a new Analytics Goal.
+</li>
+<li>
+The user selects the option to create a new Analytics Goal.
+</li>
+<li>
+The system asks the user to enter a name and description for the new Analytics Goal.
+</li>
+<li>
+The user enters a name and description to the Analytics Goal and confirms submission.
+</li>
+<li>
+The system notifies the User that the Analytics Goal has been created and finishes the use case.
+</li>
+</ol>
+</td>
+</tr>
+<tr>
+<td>Alternate Flow: Adding Analytics Method to a Analytics Goal</td>
+<td>
+This scenario can only be done by the Developer/Researcher that updated the Analytics Method or by Administrators. The Analytics Goals can have Analytics Methods attached so they are suggested when generating Triads depending on the Analytics Goal that was chosen there, if any. Otherwise the Triad will show all the possible Analytics Methods with no preferences.
+<ol>
+<li>
+The system shows the user the available Analytics Goals and an option to attach Analytics Methods to a selected Analytics Goal.
+</li>
+<li>
+The user selects one of the existing Analytics Goals and selects to attach an Analytics Method to it.
+</li>
+<li>
+The system shows the list of available Analytics Methods that are not yet attached to the Analytics Goal and an option to attach.
+</li>
+<li>
+The user selects one or many of them and confirms the attachment of Analytics Methods to the Analytics Goal.
+</li>
+<li>
+The system confirms the attachment and finishes the use case.
+</li>
+</ol>
+</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="openlap_suc_09-register-data-collection-for-third-party-application">OpenLAP_SUC_09: Register Data collection for Third Party Application</h4>
+<table>
+<tbody>
+<tr>
+<td><strong>Use Case Element</strong></td>
+<td><strong>Description</strong></td>
+</tr>
+<tr>
+<td>Use Case Number</td>
+<td>OpenLAP_SUC_09</td>
+</tr>
+<tr>
+<td>Use Case Name</td>
+<td>Register Data collection for Third Party Application</td>
+</tr>
+<tr>
+<td>Use Case Description</td>
+<td>The Developer/Researcher submits a mechanism to collect data for a Third Party Application. This is only the registration of a service account and the purpose of registering the external application is to obtain authorization to collect the data.</td>
+</tr>
+<tr>
+<td>Primary Actor</td>
+<td>Developer/Researcher</td>
+</tr>
+<tr>
+<td>Precondition</td>
+<td>The user exists and is logged into the OpenLAP system. The User is additionally a Developer/Researcher and has permissions to submit Data collection for third party applications. An external service that sends data from an external source or application exists and complies with a data Collection API for the OpenLAP system. The Developer/Researcher is in the interface for registration of Data Collection Applications.</td>
+</tr>
+<tr>
+<td>Basic Flow: Register Data Collection Third Party Application</td>
+<td>
+<ol>
+<li>The OpenLAP system shows the Developer/Researcher the list of existing registered applications into his account. The system shows an option to register a new Application for Data Collection. Additionally it shows brief instructions for the usage of the registration.</li>
+<li>The Developer/Researcher selects to register an a new Application for Data Collection.</li>
+<li>The OpenLAP system prompts the Developer/Researcher for a Data Collection Application Name and Description.</li>
+<li>The user enters gives name and description for the Data Collection Application.</li>
+<li>The system generates a Data Collection Application public/private key to be integrated to it by the Developer/Researcher. The OpenLAP system notifies that the Data Collection Third Party Application is now authorized for sending data.</li>
+<li>The user takes the Data Collection Application public/private key and finishes the registration process.</li>
+</ol>
+</td>
+</tr>
+<tr>
+<td>Alternate Flows: Modification of Authorization for Data Collection Third Party Application</td>
+<td>
+<ol>
+<li>This flow is triggered when the Developer/Researcher selects one of the existing Data Collection Third Party Applications for his account.</li>
+<li>The OpenLAP system shows the current authorization setting of the Data Collection for the selected Third Party Application.</li>
+<li>The Developer/Researcher selects to deauthorize/authorize the application.</li>
+<li>The OpenLAP system asks for confirmation of authorization settings change.</li>
+<li>The Developer/Researcher confirms authorization settings change.</li>
+<li>The OpenLAP system show confirmation of Authorization of Data Collection Third Party Application.</li>
+</ol>
+</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="openlap_suc_10-create-view-update-analytics-methods">OpenLAP_SUC_10: Create/View/Update Analytics Methods</h4>
+<table>
+<tbody>
+<tr>
+<td><strong>Use Case Element</strong></td>
+<td><strong>Description</strong></td>
+</tr>
+<tr>
+<td>Use Case Number</td>
+<td>OpenLAP_SUC_10</td>
+</tr>
+<tr>
+<td>Use Case Name</td>
+<td>Create/View/Update Analytics Methods</td>
+</tr>
+<tr>
+<td>Use Case Description</td>
+<td>The Developer/Researcher can implement an Analytics Method using the OpenLAP Analytics Method Framework and submit it to the OpenLAP in order to allow users of the system to use them as Analytics Methods when processing Indicators.</td>
+</tr>
+<tr>
+<td>Primary Actor</td>
+<td>Developer/Researcher</td>
+</tr>
+<tr>
+<td>Precondition</td>
+<td>The Developer/Researcher has a private/public key to sign the JAR file to sign the submission of Analytics Method JARs, this public/private key can be generated by the user in the corresponding Alternate Flow for this Use Case. The package to be submitted complies with the Modularity Framework for the OpenLAP system. The Developer/Researcher is logged into the system and is on the Analytics Method submission panel.</td>
+</tr>
+<tr>
+<td>Basic Flow: Uploading a Descriptive Analytics Method</td>
+<td>
+<ol>
+<li>The OpenLAP system displays a list of the existing Analytics Methods submitted by the current Developer/Researcher, an option for each one to be updated and an option to submit a new method as well as an option to generate a new public/private key pair for submission of Analytics Methods.</li>
+<li>The Developer/Researcher selects to make a request for submitting a new Analytics Method to the OpenLAP system.</li>
+<li>The OpenLAP system prompts the user for uploading a signed JAR file, and a Name and description for the Method as well as the type of the Method (Predictive or Descriptive).</li>
+<li>The Developer/Researcher uploads the signed JAR file to the system. The Developer/Researcher additionally enters the name of the Analytics Method and the Description. The Developer/Researcher also marks the submission as a Descriptive Analytics Method.</li>
+<li>The OpenLAP system confirms successful upload of the Method with a status code, a validation confirmation, the version read from the JAR file and the name of the method.</li>
+<li>The user confirms the notification and finishes the use case.</li>
+</ol>
+</td>
+</tr>
+<tr>
+<td>Alternate Flow: Predictive Model Method submission.</td>
+<td>This flow is triggered if the user selects to submit a Predictive Analytics Method.
+<ol>
+<li>The Developer/Researcher uploads the signed JAR file to the system. The Developer/Researcher additionally enters the name of the Analytics Method and the Description. The Developer/Researcher also marks the submission as a Predictive Analytics Method.</li>
+<li>The OpenLAP system asks for a PMML file for the Predictive model.</li>
+<li>The Developer/Researcher uploads the PMML file and submits the complete Analytics Method.</li>
+<li>The OpenLAP system confirms successful upload of the Method with a status code, a validation confirmation, the version read from the JAR file and the name of the method.</li>
+<li>The OpenLAP system returns to the basic flow: The OpenLAP system confirms successful upload of the Method with a status code, a validation confirmation, the version read from the JAR file and the name of the method.</li>
+</ol>
+</td>
+</tr>
+<tr>
+<td>Alternate Flow: Generation of Public/Private key pair for submission of Analytics Methods.</td>
+<td>This flow is triggered when the Developer/Researcher selects to generate a new public/private key pair for submission of Analytics Methods.
+<ol>
+<li>The Developer/Researcher selects to generate a new Public/Private key pair for submission of analytics Methods.</li>
+<li>The OpenLAP system asks for confirmation of the new Public/Private Key generation.</li>
+<li>The Developer/Researcher confirms the generation of the Public/Private key generation.</li>
+<li>The OpenLAP system provides the user with the new Public/Private key generation and confirms that is a current Public/Private key pair for the Developer/Researcher.</li>
+<li>The Developer/Researcher takes the Public/Private Key and ends the use case.</li>
+</ol>
+</td>
+</tr>
+<tr>
+<td>Alternate Flow: Update Method</td>
+<td>This flow is triggered when the Developer/Researcher selects to Update an existing Analytics Method.
+<ol>
+<li>The Developer/Researcher selects to update one of the listed Analytics Methods.</li>
+<li>The OpenLAP system continues in the respective procedure of the Basic Flow or the Alternate Flow: Predictive Model Method submission.</li>
+<li>The OpenLAP system confirms the update of the Analytics Method and finishes.</li>
+</ol>
+</td>
+</tr>
+<tr>
+<td>Alternate Flow: Error submitting method (invalid signature, invalid PMML file, Analytics Method already exists)</td>
+<td>This flow is triggered if either the signature used for the submitted files is not recognized by the system or the PMML file submitted for a Predictive Analytics Method is not valid or the Analytics Method already exists.
+<ol>
+<li>The OpenLAP system shows an error message and returns to the submission panel for the Developer/Researcher to attempt a new submission of the files.</li>
+<li>The flow continues on the corresponding flow.</li>
+</ol>
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<h4 id="openlap_suc_11-create-view-update-visualizations">OpenLAP_SUC_11: Create/View/Update Visualizations</h4>
+<table>
+<tbody>
+<tr>
+<td><strong>Use Case Element</strong></td>
+<td><strong>Description</strong></td>
+</tr>
+<tr>
+<td>Use Case Number</td>
+<td>OpenLAP_SUC_11</td>
+</tr>
+<tr>
+<td>Use Case Name</td>
+<td>Create/View/Update Visualizations</td>
+</tr>
+<tr>
+<td>Use Case Description</td>
+<td>The Developer/Researcher can implement a visualization technique using the OpenLAP Visualization Framework and submit it to the OpenLAP in order to allow users of the system to use them as Visualization technique when processing Indicators.
+</td>
+</tr>
+<tr>
+<td>Primary Actor</td>
+<td>Developer/Researcher</td>
+</tr>
+<tr>
+<td>Precondition</td>
+<td>The Developer/Researcher has a private/public key to sign the JAR file to sign the submission of Visualization frameworks JARS, this public/private key can be generated by the user in the corresponding Alternate Flow for this Use Case. The package to be submitted complies with the Modularity Framework for the OpenLAP system. The Developer/Researcher is logged into the system and is on the Visualization framework submission panel.</td>
+</tr>
+<tr>
+<td>Basic Flow</td>
+<td>
+<ol>
+<li>The Visualizer system displays a list of all existing Visualization frameworks along with their respective techniques/methods, an option for each one to be updated and an option to submit a new framework as well as an option to generate new public/private key pair for submission of Visualization frameworks. </li>
+<li>The Developer/Researcher selects to make a request for submitting a new Visualization framework to the Visualizer system. </li>
+<li>The Visualizer system prompts the user for uploading a signed JAR file, and a Name and description
+for the framework as well as the list of techniques supported by framework.</li>
+<li>The Developer/Researcher uploads the signed JAR file to the system.</li>
+<li>The Visualizer system confirms successful upload of the framework with a status code, a validation confirmation and the name of the framework.</li>
+<li>The user confirms the notification and finishes the use case.</li>
+</ol>
+</td>
+</tr>
+<tr>
+<td>Alternate Flows:Generation of Public/Private key pair for submission of Visualization frameworks</td>
+<td>This flow is triggered when the Developer/Researcher selects to generate a new public/private key pair for submission of Visualization frameworks.
+<ol>
+<li>The Developer/Researcher selects to generate a new Public/Private key pair for submission of visualization frameworks.</li>
+<li>The Visualizer system asks for confirmation of the new Public/Private Key generation.</li>
+<li>The Developer/Researcher confirms the generation of the Public/Private key generation.</li>
+<li>The Visualizer system provides the user with the new Public/Private key generation and confirms that is a current Public/Private key pair for the Developer/Researcher.</li>
+<li>The Developer/Researcher takes the Public/Private Key and ends the use case.</li>
+</ol>
+</td>
+</tr>
+<tr>
+<td>Alternate Flows: Updating existing/Uploading new visualization techniques for existing Visualization frameworks</td>
+<td>This flow is triggered when the Developer/Researcher selects to Update an existing Visualization technique of a framework known to the Visualizer system.
+<ol>
+<li>The Developer/Researcher selects to update one of the listed Visualization techniques of a framework.</li>
+<li>The Visualizer system asks for a new JAR of the Visualization framework to replace the existing version.</li>
+<li>The Visualizer system prompts the Developer/Researcher to confirm overwriting the existing framework with the new JAR.</li>
+<li>The Developer/Researcher confirms and uploads the signed JAR file to the system .</li>
+<li>The Visualizer system confirms successful upload of the framework with a status code, a validation confirmation and the name of the framework.</li>
+<li>The Developer/Researcher confirms the notification and finishes the use case.</li>
+</ol>
+</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="openlap_suc_12-submit-usage-data">OpenLAP_SUC_12: Submit Usage Data</h4>
+<table>
+<tbody>
+<tr>
+<td>Use Case Element</td>
+<td>Description</td>
+</tr>
+<tr>
+<td>Use Case Number</td>
+<td>OpenLAP_SUC_12</td>
+</tr>
+<tr>
+<td>Use Case Name</td>
+<td>Usage Data</td>
+</tr>
+<tr>
+<td>Use Case Description</td>
+<td>When a Developer/researches has registered a third party has been registered as a data collector, it can use the OpenLAP in order to submit data to the platform.</td>
+</tr>
+<tr>
+<td>Primary Actor</td>
+<td>Third Party Application</td>
+</tr>
+<tr>
+<td>Precondition</td>
+<td>The Data collection for the Third Party Application must be registered and it must be active. Additionally, it must have access to the private/public key pair and must be able to make the submission requests through the provided API. There is a secure connection between the OpenLAP system and the Third Party Application.</td>
+</tr>
+<tr>
+<td>Basic Flow</td>
+<td>
+<ol>
+<li>The Third Party Application sends a request to the OpenLAP system for submission of a dataset to the appropriate endpoint defined by the Data Collection component of the OpenLAP. The request is signed with the Third Party Application private key.</li>
+<li>The OpenLAP gives a confirmation of the request stating a successful data submission whit a submission code and a timestamp.</li>
+</ol>
+</td>
+</tr>
+<tr>
+<td>Alternate Flows: Erroneous DataSet sent or invalid signature.</td>
+<td>This Scenario triggers if the request of the Third Party Application is not well formed or has incorrect data or if the data is signed with an unknown private key.
+<ol>
+<li>The OpenLAP system returns an error code with the source of error.</li>
+</ol>
+</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="non-functional-requirements">Non-Functional Requirements</h2>
+<ul>
+<li>Data Aggregation and Integration: The system should be able to aggregate raw data from heterogeneous sources and different formats.</li>
+<li>Interoperability: Reduce heterogeneity of data to increase interoperability (exchange of information or use information exchanged). It&#39;s main usage is for comparison and generalization.</li>
+<li>Specifications and Standards: The system must adopt standards to support interoperability of data and services. Standards include data exchange, models and methods, logging, assessment and privacy.</li>
+<li>Reusability: In order to along itself with the &quot;Open&quot; principles, the system should be able to &quot;reuse, redistribute, revise, remix&quot; components when it is sensible to do so. The use of (open) standards should support this requirement.</li>
+<li>Modularity: The system&#39;s architecture should allow for easy integration of components by different developers and allow changes to be made. The platform should have a modular service-oriented approach for easy adaptability.</li>
+<li>Flexibility and Extensibility: The system should be extensible to use new blends of techniques and tools to get information from the available data.</li>
+<li>Performance and Scalability: The system must allow incremental extension of data volume and functionalities. Use big data solutions like MapReduce and NoSQL.</li>
+<li>Usability: The system must integrate GUI design patterns and use appropriate visualizations for better understanding information.</li>
+<li>Privacy: The system must be built always with privacy in mind.</li>
+<li>Transparency: The system must allow users to see that data is not used in unintended ways. Documentation must reflect innards, state how long is data available and who can access as well of what methods are used on the data.</li>
+<li>Personalization: The system must allow different stakeholders to tailor the OpenLAP to their needs.</li>
+</ul>
+
+		</div>
+
+		<script></script>
+	</body>
+</html>

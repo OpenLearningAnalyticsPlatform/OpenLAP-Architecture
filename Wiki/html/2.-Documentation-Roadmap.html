@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>DOCUMENTATION ROADMAP</title>
+		<style>
+			/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+sup {
+   vertical-align: super;
+   font-size: smaller;
+}
+
+sub {
+  vertical-align: sub;
+  font-size: smaller;
+}
+
+/* Generic styles */
+body {
+	background: #f5f5f5;
+  color: #222;
+  font-family: 'Palatino Linotype','Book Antiqua',Palatino,FreeSerif,serif;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6,
+ul, ol,
+p,
+code, pre,
+hr {
+	line-height: 1.5em;
+	margin: 1.5em 0 0.5em 0;
+}
+
+*:first-child {
+	margin-top: 0;
+}
+
+/* Headers */
+h1, h2, h3, h4, h5, h6 {
+	font-weight: bold;
+}
+
+h1 {
+	font-size: 3.5em;
+}
+
+h2 {
+	font-size: 2.5em;
+}
+
+h3 {
+	font-size: 2em;
+}
+
+h4 {
+	font-size: 1.5em
+}
+
+h5 {
+	font-size: 1.2em;
+}
+
+h6 {
+	font-size: 1em;
+}
+
+/* Lists */
+ul, ol {
+	padding-left: 2em;
+}
+
+ul {
+	list-style-type: disc;	
+}
+
+ol {
+	list-style-type: decimal;
+}
+
+/* Code and pre */
+code, pre {
+	font-family: "Bitstream Vera Sans Mono", "Courier", monospace;
+}
+code {
+	background: none repeat scroll 0 0 #F8F8FF;
+  border: 1px solid #DEDEDE;
+  border-radius: 3px 	;
+  padding: 0 0.2em;
+}
+pre {
+	border-left: 5px solid #eee;
+	margin-left: 2em;	
+	padding-left: 1em;
+}
+pre > code {
+	background: transparent;
+	border: none;
+	padding: 0;
+}
+
+/* Links */
+a {
+  color: #261A3B;
+}
+
+a:visited {
+  color: #261A3B;
+}
+
+/* Inlines */
+strong {
+	font-weight: bold;
+}
+
+em {
+	font-style: italic;
+}
+
+/* Container */
+.container {
+	background: #FFF;
+	padding: 30px 50px;
+	margin: 0 auto;
+	width: 850px;
+}
+
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h1 id="documentation-roadmap">DOCUMENTATION ROADMAP</h1>
+<h2 id="scope-and-summary">Scope and summary</h2>
+<p>This documentation describes the architecture of the Open Learning Analytics Platform. The original platform was conceived in the paper <em>Toward an Open Learning Analytics Ecosystem</em> by  Chatti et. al. 2015.
+The Open Learning Analytics Platform (OpenLAP) has as main purpose to provide an Open Source hub for providing different Stakeholders the benefits of Learning Analytics. The platform will gather data from numerous external sources and utilize different methods in order to provide insight about the data and improve the learning process for students, teachers, developers, researchers, and administrative staff.</p>
+<p>The OpenLAP is designed to be modular, extensible and to procure simple architecture and at the same time utilize standards, design patterns and architectural guidelines in order to support its functional and non-functional requirements (also called &quot;quality requirements&quot;).</p>
+<h2 id="how-the-documentation-is-organized">How the documentation is organized</h2>
+<p>This architecture document is organized into the following sections:</p>
+<ol>
+<li><a href="">System Overview</a>: This section contains an overview of the system functionalities with a description of the main stakeholders, users, use cases and list of non-functional requirements. The architecture is based in providing blueprints to realize the scenarios described in this section.</li>
+<li><a href="">Documentation Roadmap</a>:It is the present section. This section provides a guideline of the documentation and a reference as well as a summary of the system and useful references.</li>
+<li><a href="">How a View is Documented</a>: This section presents the general layout of the documentation for the different views that each component of the system has. It is based on the example template given on the book <em>Documenting Software Architectures: Views and Beyond (Bachmann et al. 2011, Addison-Wesley)</em> which allows ease of reading, simple layout and cohesive presentation.</li>
+<li>Views: These are the main parts of the architecture. Each one of the main Components of the OpenLAP system are divided in Module, Component &amp; Connector (C&amp;C), and (when necessary) Allocation views. This allows to see each component on a high level of architecture but with sufficient technical depth to provide guidelines for implementation on future iterations over the project.</li>
+<li><a href="">Rationale</a>: This section registers important architectural decisions and the rational behind them. It attempts to convey the constrains and considerations made during the design of the architecture of the system.</li>
+<li><a href="">Mapping Requirements to Architecture</a>: This section provides correspondence between important architectural artifacts and the functional requirements of the system.</li>
+<li><a href="">Open Questions</a>: In this section are listed the tasks that future that can be achieved during future iterations on the OpenLAP.</li>
+<li><a href="">Glossary and Acronyms</a>: A list of important terms, acronyms and definitions.</li>
+<li><a href="">Referenced Materials</a>: Important references used in the design of the architecture.</li>
+</ol>
+<p>Places where the documentation is not complete are marked with &quot;[TODO]&quot; or &quot;[TODO:<description>]&quot;.</p>
+<h3 id="how-to-update-this-architecture-document">How to update this architecture document</h3>
+<p>This documentation is meant to be self contained along with the GitHub repository. The documentation here is provided in order to provide other developers and users understanding of the conceptual architecture of the system and forward the development in an understandable manner. The documentation here can (and should) be updated as new components of the system are implemented or added. An initial final version of this documentation will be a section of the Master Thesis <em>Modularity Framework for Open Learning Analytics Platform</em> (Barrios, RWTH University, Germany 2015), since it comprises an important part of that work. Further iterations should be aimed to update the wiki version of this architecture.</p>
+
+		</div>
+
+		<script></script>
+	</body>
+</html>
